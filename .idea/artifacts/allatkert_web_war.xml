@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="allatkert-web:war">
+    <output-path>$PROJECT_DIR$/allatkert-web/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>allatkert-web</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="allatkert-web.war">
+      <element id="artifact" artifact-name="allatkert-web:war exploded" />
+    </root>
+  </artifact>
+</component>

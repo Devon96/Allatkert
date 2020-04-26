@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="allatkert-web" />
+        <module name="allatkert-desktop" />
+        <module name="allatkert-core" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Allatkert" target="11" />
+      <module name="allatkert-core" target="11" />
+      <module name="allatkert-desktop" target="11" />
+      <module name="allatkert-web" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
