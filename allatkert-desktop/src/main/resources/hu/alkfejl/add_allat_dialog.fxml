@@ -36,10 +36,7 @@
                 <Insets />
             </opaqueInsets>
         </Button>
-        <Button fx:id="addButton" mnemonicParsing="false" onAction="#save" text="OK" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
-
-        <Label fx:id="errorMsg" styleClass="warning" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-
+        <Button fx:id="addButton" mnemonicParsing="false" onAction="#save"  text="OK" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
 
     </children>
     <opaqueInsets>

@@ -7,9 +7,9 @@ import java.io.Serializable;
 public class Orokbefogado implements Serializable {
 
     private static final LongProperty serialVersionUID = new SimpleLongProperty(5252858952828847026L);
-    private IntegerProperty azonosito = new SimpleIntegerProperty();
+    private StringProperty felhasznalonev = new SimpleStringProperty();
     private StringProperty nev = new SimpleStringProperty();
-    private IntegerProperty telefonszam = new SimpleIntegerProperty();
+    private StringProperty telefonszam = new SimpleStringProperty();
     private StringProperty email = new SimpleStringProperty();
     private StringProperty felvetelIdeje = new SimpleStringProperty();
     private StringProperty jelszo = new SimpleStringProperty();
@@ -18,8 +18,8 @@ public class Orokbefogado implements Serializable {
     public Orokbefogado() {
     }
 
-    public Orokbefogado(IntegerProperty azonosito, StringProperty nev, IntegerProperty telefonszam, StringProperty email, StringProperty felvetelIdeje, StringProperty jelszo) {
-        this.azonosito = azonosito;
+    public Orokbefogado(StringProperty felhasznalonev, StringProperty nev, StringProperty telefonszam, StringProperty email, StringProperty felvetelIdeje, StringProperty jelszo) {
+        this.felhasznalonev = felhasznalonev;
         this.nev = nev;
         this.telefonszam = telefonszam;
         this.email = email;
@@ -39,16 +39,16 @@ public class Orokbefogado implements Serializable {
         Orokbefogado.serialVersionUID.set(serialVersionUID);
     }
 
-    public int getAzonosito() {
-        return azonosito.get();
+    public String getFelhasznalonev() {
+        return felhasznalonev.get();
     }
 
-    public IntegerProperty azonositoProperty() {
-        return azonosito;
+    public StringProperty felhasznalonevProperty() {
+        return felhasznalonev;
     }
 
-    public void setAzonosito(int azonosito) {
-        this.azonosito.set(azonosito);
+    public void setAzonosito(String felhasznalonev) {
+        this.felhasznalonev.set(felhasznalonev);
     }
 
     public String getNev() {
@@ -63,15 +63,15 @@ public class Orokbefogado implements Serializable {
         this.nev.set(nev);
     }
 
-    public int getTelefonszam() {
+    public String getTelefonszam() {
         return telefonszam.get();
     }
 
-    public IntegerProperty telefonszamProperty() {
+    public StringProperty telefonszamProperty() {
         return telefonszam;
     }
 
-    public void setTelefonszam(int telefonszam) {
+    public void setTelefonszam(String telefonszam) {
         this.telefonszam.set(telefonszam);
     }
 
@@ -110,4 +110,22 @@ public class Orokbefogado implements Serializable {
     public void setJelszo(String jelszo) {
         this.jelszo.set(jelszo);
     }
+
+    public Orokbefogado(String felhasznalonev, String nev, String telefonszam, String email, String felvetelIdeje, String jelszo) {
+        this.felhasznalonev.set(felhasznalonev);
+        this.nev.set(nev);
+        this.telefonszam.set(telefonszam);
+        this.email.set(email);
+        this.felvetelIdeje.set(felvetelIdeje);
+        this.jelszo.set(jelszo);
+    }
+
+
+
+
+
+
+
+
+
 }

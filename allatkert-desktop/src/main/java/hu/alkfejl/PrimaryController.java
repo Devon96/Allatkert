@@ -12,10 +12,7 @@ import java.io.IOException;
 public class PrimaryController {
 
 
-    @FXML
-    private void switchToSecondary() throws IOException {
-        App.setRoot("secondary");
-    }
+
     @FXML
     private void switchToListAllat() throws IOException {
         App.setRoot("list_allat");
@@ -31,6 +28,10 @@ public class PrimaryController {
     @FXML
     public void addAllat() throws IOException{
        App.setDialog("add_allat_dialog");
+    }
+    @FXML
+    public void addOrokbefogado() throws IOException{
+        App.setDialog("add_orokbefogado_dialog");
     }
 
 }

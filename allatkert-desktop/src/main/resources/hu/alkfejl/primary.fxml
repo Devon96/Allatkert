@@ -17,7 +17,7 @@
           <Menu mnemonicParsing="false" text="Beszuras">
             <items>
               <MenuItem mnemonicParsing="false" text="Uj allat hozzaadasa" onAction="#addAllat"/>
-              <MenuItem mnemonicParsing="false" text="Uj orokbefogado hozzaadasa" />
+              <MenuItem mnemonicParsing="false" text="Uj orokbefogado hozzaadasa" onAction="#addOrokbefogado" />
               <MenuItem mnemonicParsing="false" text="Uj konyveles hozzaadasa" />
             </items>
           </Menu>
