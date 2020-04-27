@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="allatkert.db" uuid="8fceaa4f-e1b9-4681-b0c8-6e5379e37871">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:/opt/tomcat/bin/allatkert.db</jdbc-url>
+    </data-source>
+  </component>
+</project>

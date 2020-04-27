@@ -1,0 +1,4 @@
+--patch-module
+allatkert.core=_
+--add-reads
+allatkert.core=ALL-UNNAMED

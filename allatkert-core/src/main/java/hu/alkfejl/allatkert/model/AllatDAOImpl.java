@@ -11,8 +11,8 @@ import java.util.List;
 
 public class AllatDAOImpl implements AllatDAO {
 
-    private static final String CONN_STR = "jdbc:sqlite:allatkert.db";
-    private static final String SELECT_ALL_ALLAT = "SELECT * FROM Allatok";
+    private static final String CONN_STR = "jdbc:sqlite:/opt/tomcat/bin/allatkert.db";
+    private static final String SELECT_ALL_ALLAT = "SELECT * FROM Allatok;";
 
     public AllatDAOImpl(){
         try {
@@ -35,10 +35,11 @@ public class AllatDAOImpl implements AllatDAO {
 
         try(Connection conn = DriverManager.getConnection(CONN_STR);
             Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery(SELECT_ALL_ALLAT)
+            ResultSet rs = st.executeQuery("select * from allatok ");
         ){
             while(rs.next()){
-                Allat allat = new Allat(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5));
+                Allat allat = new Allat(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6));
+                System.out.println(allat.toString());
                 result.add(allat);
             }
         }catch (Exception e){

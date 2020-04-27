@@ -122,7 +122,8 @@ public class Allat implements Serializable {
         this.szuletesiEv.set(szuletesiEv);
     }
 
-    public Allat(String nev, String faj, String kep, String bemutatkozas, int szuletesiEv) {
+    public Allat(int azonosito, String nev, String faj, String kep, String bemutatkozas, int szuletesiEv) {
+        this.azonosito.set(azonosito);
         this.nev.set(nev);
         this.faj.set(faj);
         this.kep.set(kep);

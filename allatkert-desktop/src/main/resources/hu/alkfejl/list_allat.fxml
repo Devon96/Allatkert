@@ -24,14 +24,14 @@
                 </Menu>
             </menus>
         </MenuBar>
-      <TableView layoutY="29.0" maxWidth="1.7976931348623157E308" prefHeight="266.0">
+      <TableView fx:id="table" layoutY="29.0" maxWidth="1.7976931348623157E308" prefHeight="266.0">
         <columns>
-          <TableColumn prefWidth="94.0" text="Azonosito" />
-          <TableColumn prefWidth="56.0" text="Nev" />
-            <TableColumn prefWidth="75.0" text="Faj" />
-            <TableColumn prefWidth="84.0" text="Kep" />
-            <TableColumn prefWidth="125.0" text="Bemutatkozas" />
-            <TableColumn prefWidth="125.0" text="Szuletesi ev" />
+          <TableColumn fx:id="azonositoCol" prefWidth="94.0" text="Azonosito" />
+          <TableColumn fx:id="nevCol" prefWidth="56.0" text="Nev" />
+            <TableColumn fx:id="fajCol" prefWidth="75.0" text="Faj" />
+            <TableColumn fx:id="kepCol" prefWidth="84.0" text="Kep" />
+            <TableColumn fx:id="bemutatkozasCol" prefWidth="125.0" text="Bemutatkozas" />
+            <TableColumn fx:id="szuletesCol" prefWidth="125.0" text="Szuletesi ev" />
         </columns>
       </TableView>
     </children>
