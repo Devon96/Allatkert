@@ -22,10 +22,10 @@ public class AllatController {
         return single_instance;
     }
 
-    public boolean addAllat(Allat allat){return dao.addAllat(allat);};
-    public List<Allat> listAllat(){return dao.listAllat();};
-    public boolean updateAllat(Allat allat){return dao.updateAllat(allat);};
-    public boolean deleteAllat(Allat allat){return dao.deleteAllat(allat);};
+    public boolean addAllat(Allat allat){return dao.addAllat(allat);}
+    public List<Allat> listAllat(){return dao.listAllat();}
+    public boolean updateAllat(Allat allat){return dao.updateAllat(allat);}
+    public boolean deleteAllat(Allat allat){return dao.deleteAllat(allat);}
 
 
 
