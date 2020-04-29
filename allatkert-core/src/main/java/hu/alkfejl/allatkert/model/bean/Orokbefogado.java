@@ -47,7 +47,7 @@ public class Orokbefogado implements Serializable {
         return felhasznalonev;
     }
 
-    public void setAzonosito(String felhasznalonev) {
+    public void setFelhasznalonev(String felhasznalonev) {
         this.felhasznalonev.set(felhasznalonev);
     }
 

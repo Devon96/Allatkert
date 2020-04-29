@@ -9,7 +9,7 @@ import java.util.List;
 public class AllatDAOImpl implements AllatDAO {
 
     private static final String CONN_STR = "jdbc:sqlite:/opt/tomcat/bin/allatkert.db";
-    private static final String SELECT_ALL_ALLAT = "SELECT * FROM Allatok;";
+    private static final String SELECT_ALL_ALLAT = "SELECT * FROM Allatok";
     private static final String INSERT_ALLAT = "INSERT INTO Allatok(nev,faj,fenykep,bemutatkozas,szuletesi_ev) VALUES (?,?,?,?,?)";
 
     public AllatDAOImpl(){
@@ -23,7 +23,6 @@ public class AllatDAOImpl implements AllatDAO {
 
     @Override
     public boolean addAllat(Allat allat) {
-
 
         try (Connection conn = DriverManager.getConnection(CONN_STR);
              PreparedStatement st = conn.prepareStatement(INSERT_ALLAT)) {
@@ -58,7 +57,7 @@ public class AllatDAOImpl implements AllatDAO {
 
         try(Connection conn = DriverManager.getConnection(CONN_STR);
             Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("select * from allatok ");
+            ResultSet rs = st.executeQuery(SELECT_ALL_ALLAT);
         ){
             while(rs.next()){
                 Allat allat = new Allat(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6));

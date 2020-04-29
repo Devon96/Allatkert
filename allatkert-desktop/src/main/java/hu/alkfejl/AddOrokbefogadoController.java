@@ -38,10 +38,10 @@ public class AddOrokbefogadoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-      //  felhasznalonevField.textProperty().bindBidirectional(orokbefogado.felhasznalonevProperty());
+        felhasznalonevField.textProperty().bindBidirectional(orokbefogado.felhasznalonevProperty());
         jelszoField.textProperty().bindBidirectional(orokbefogado.jelszoProperty());
         nevField.textProperty().bindBidirectional(orokbefogado.nevProperty());
-      //  telefonszamField.textProperty().bindBidirectional(orokbefogado.telefonszamProperty());
+        telefonszamField.textProperty().bindBidirectional(orokbefogado.telefonszamProperty());
         emailField.textProperty().bindBidirectional(orokbefogado.emailProperty());
         felvetelField.textProperty().bindBidirectional(orokbefogado.felvetelIdejeProperty());
 
