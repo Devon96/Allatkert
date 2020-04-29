@@ -5,8 +5,7 @@ import hu.alkfejl.allatkert.model.bean.Allat;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
@@ -30,10 +29,16 @@ public class ListAllatController implements Initializable {
     private TableColumn<Allat, String> bemutatkozasCol;
     @FXML
     private TableColumn<Allat, Integer> szuletesCol;
+    @FXML
+    private TableColumn<Allat, Void> torlesCol;
 
     public ListAllatController(){}
 
-
+    @FXML
+    public void refreshTable(){
+        List<Allat> list = AllatController.getInstance().listAllat();
+        table.setItems(FXCollections.observableList(list));
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -47,9 +52,43 @@ public class ListAllatController implements Initializable {
         bemutatkozasCol.setCellValueFactory(new PropertyValueFactory<>("bemutatkozas"));
         szuletesCol.setCellValueFactory(new PropertyValueFactory<>("szuletesiEv"));
 
+
+
+        torlesCol.setCellFactory(param -> {
+            return new TableCell<>(){
+                private final Button deleteBtn = new Button("Törlés");
+                {
+                    deleteBtn.setOnAction(event -> {
+                        Allat a = getTableView().getItems().get(getIndex());
+                        deleteAllat(a);
+                        refreshTable();
+                    });
+                }
+
+                @Override
+                protected void updateItem(Void item, boolean empty){
+                    super.updateItem(item, empty);
+                    if(empty){
+                        setGraphic(null);
+                    }else{
+                        setGraphic(deleteBtn);
+                    }
+                }
+            };
+        });
+
+
+
     }
 
-
+    private void deleteAllat(Allat allat){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Biztos vagy benne hogy ki akarod törölni ezt az azonosítójú állatot: '" + allat.getAzonosito() + "'", ButtonType.YES, ButtonType.NO);
+        alert.showAndWait().ifPresent(buttonType -> {
+            if(buttonType.equals(ButtonType.YES)){
+                AllatController.getInstance().deleteAllat(allat);
+            }
+        });
+    }
 
 
 

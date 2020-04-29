@@ -11,6 +11,8 @@ public class AllatDAOImpl implements AllatDAO {
     private static final String CONN_STR = "jdbc:sqlite:/opt/tomcat/bin/allatkert.db";
     private static final String SELECT_ALL_ALLAT = "SELECT * FROM Allatok";
     private static final String INSERT_ALLAT = "INSERT INTO Allatok(nev,faj,fenykep,bemutatkozas,szuletesi_ev) VALUES (?,?,?,?,?)";
+    private static final String DELETE_ALLAT = "DELETE FROM Allatok WHERE azonosito = ?";
+
 
     public AllatDAOImpl(){
         try {
@@ -25,8 +27,8 @@ public class AllatDAOImpl implements AllatDAO {
     public boolean addAllat(Allat allat) {
 
         try (Connection conn = DriverManager.getConnection(CONN_STR);
-             PreparedStatement st = conn.prepareStatement(INSERT_ALLAT)) {
-
+             PreparedStatement st = conn.prepareStatement(INSERT_ALLAT)
+        ) {
             st.setString(1, allat.getNev());
             st.setString(2, allat.getFaj());
             st.setString(3, allat.getKep());
@@ -61,7 +63,6 @@ public class AllatDAOImpl implements AllatDAO {
         ){
             while(rs.next()){
                 Allat allat = new Allat(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6));
-                System.out.println(allat.toString());
                 result.add(allat);
             }
         }catch (Exception e){
@@ -77,6 +78,24 @@ public class AllatDAOImpl implements AllatDAO {
 
     @Override
     public boolean deleteAllat(Allat allat) {
+
+        try (Connection conn = DriverManager.getConnection(CONN_STR);
+             PreparedStatement st = conn.prepareStatement(DELETE_ALLAT)
+        ) {
+            st.setInt(1,allat.getAzonosito());
+            int res = st.executeUpdate();
+            if (res == 1) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
+
+
+
+
+
+
 }

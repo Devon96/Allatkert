@@ -6,3 +6,4 @@ hu/alkfejl/PrimaryController.class
 module-info.class
 hu/alkfejl/AddAllatController.class
 hu/alkfejl/ListKonyvelesController.class
+hu/alkfejl/ListAllatController$1.class
