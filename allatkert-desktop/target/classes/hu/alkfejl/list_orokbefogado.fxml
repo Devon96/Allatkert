@@ -31,13 +31,13 @@
                 </Menu>
             </menus>
         </MenuBar>
-        <TableView layoutY="29.0" maxWidth="1.7976931348623157E308" prefHeight="266.0" prefWidth="600.0">
+        <TableView fx:id="table" layoutY="29.0" maxWidth="1.7976931348623157E308" prefHeight="266.0" prefWidth="600.0">
             <columns>
-                <TableColumn prefWidth="94.0" text="Azonosito" />
-                <TableColumn prefWidth="56.0" text="Nev" />
-                <TableColumn prefWidth="75.0" text="Telefonszam" />
-                <TableColumn prefWidth="84.0" text="Email" />
-                <TableColumn prefWidth="125.0" text="Felvetel idopontja" />
+                <TableColumn fx:id="felhasznalonevCol" prefWidth="94.0" text="Felhasználónév" />
+                <TableColumn fx:id="nevCol" prefWidth="56.0" text="Név" />
+                <TableColumn fx:id="telefonszamCol" prefWidth="75.0" text="Telefonszám" />
+                <TableColumn fx:id="emailCol" prefWidth="84.0" text="Email" />
+                <TableColumn fx:id="idopontCol" prefWidth="125.0" text="Felvétel időpontja" />
             </columns>
         </TableView>
     </children>

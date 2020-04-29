@@ -1,7 +1,9 @@
+hu/alkfejl/allatkert/controller/OrokbefogadoController.class
 hu/alkfejl/allatkert/controller/AllatController.class
 hu/alkfejl/allatkert/model/AllatDAOImpl.class
 hu/alkfejl/allatkert/model/bean/Orokbefogado.class
 module-info.class
+hu/alkfejl/allatkert/model/OrokbefogadoDAOImpl.class
 hu/alkfejl/allatkert/model/bean/Konyveles.class
 hu/alkfejl/allatkert/model/AllatDAO.class
 hu/alkfejl/allatkert/model/OrokbefogadoDAO.class

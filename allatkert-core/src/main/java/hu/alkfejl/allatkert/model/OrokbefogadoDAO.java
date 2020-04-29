@@ -9,5 +9,5 @@ public interface OrokbefogadoDAO {
     boolean addOrokbefogado(Orokbefogado orokbefogado);
     List<Orokbefogado> listOrokbefogado();
     boolean updateOrokbefogado(Orokbefogado orokbefogado);
-    boolean deleteAllat(Orokbefogado orokbefogado);
+    boolean deleteOrokbefogado(Orokbefogado orokbefogado);
 }

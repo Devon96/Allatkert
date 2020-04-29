@@ -111,14 +111,23 @@ public class Orokbefogado implements Serializable {
         this.jelszo.set(jelszo);
     }
 
-    public Orokbefogado(String felhasznalonev, String nev, String telefonszam, String email, String felvetelIdeje, String jelszo) {
+    public Orokbefogado(String felhasznalonev, String jelszo, String nev, String telefonszam, String email, String felvetelIdeje) {
+        this.felhasznalonev.set(felhasznalonev);
+        this.jelszo.set(jelszo);
+        this.nev.set(nev);
+        this.telefonszam.set(telefonszam);
+        this.email.set(email);
+        this.felvetelIdeje.set(felvetelIdeje);
+    }
+
+    public Orokbefogado(String felhasznalonev, String nev, String telefonszam, String email, String felvetelIdeje) {
         this.felhasznalonev.set(felhasznalonev);
         this.nev.set(nev);
         this.telefonszam.set(telefonszam);
         this.email.set(email);
         this.felvetelIdeje.set(felvetelIdeje);
-        this.jelszo.set(jelszo);
     }
+
 
 
 
