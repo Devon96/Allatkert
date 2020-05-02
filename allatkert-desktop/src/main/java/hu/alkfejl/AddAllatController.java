@@ -2,6 +2,7 @@ package hu.alkfejl;
 
 import hu.alkfejl.allatkert.controller.AllatController;
 import hu.alkfejl.allatkert.model.bean.Allat;
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

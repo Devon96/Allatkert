@@ -1,5 +1,7 @@
 package hu.alkfejl;
 
+import hu.alkfejl.allatkert.controller.AllatController;
+import hu.alkfejl.allatkert.controller.OrokbefogadoController;
 import hu.alkfejl.allatkert.model.bean.Orokbefogado;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,8 +26,6 @@ public class AddOrokbefogadoController implements Initializable {
     @FXML
     public TextField emailField;
     @FXML
-    public TextField felvetelField;
-    @FXML
     public PasswordField jelszoField;
     @FXML
     public Label errorMsg;
@@ -43,7 +43,6 @@ public class AddOrokbefogadoController implements Initializable {
         nevField.textProperty().bindBidirectional(orokbefogado.nevProperty());
         telefonszamField.textProperty().bindBidirectional(orokbefogado.telefonszamProperty());
         emailField.textProperty().bindBidirectional(orokbefogado.emailProperty());
-        felvetelField.textProperty().bindBidirectional(orokbefogado.felvetelIdejeProperty());
 
 
         //email validacio
@@ -68,6 +67,20 @@ public class AddOrokbefogadoController implements Initializable {
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.close();
     }
+
+    @FXML
+    private void save(ActionEvent event) {
+        boolean result = false;
+        result = OrokbefogadoController.getInstance().addOrokbefogado(orokbefogado);
+        if (result) {
+            ((Node) event.getSource()).getScene().getWindow().hide();
+        } else {
+            System.err.println("MEGINT EGY ADATBÁZIS HIBA");
+        }
+    }
+
+
+
 
 
 

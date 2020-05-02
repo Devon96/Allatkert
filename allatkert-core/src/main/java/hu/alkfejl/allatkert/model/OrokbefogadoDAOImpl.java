@@ -3,10 +3,7 @@ package hu.alkfejl.allatkert.model;
 import hu.alkfejl.allatkert.model.bean.Allat;
 import hu.alkfejl.allatkert.model.bean.Orokbefogado;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,11 +11,29 @@ public class OrokbefogadoDAOImpl implements OrokbefogadoDAO {
 
     private static final String CONN_STR = "jdbc:sqlite:/opt/tomcat/bin/allatkert.db";
     private static final String SELECT_ALL_OROKBEFOGADO = "SELECT felhasznalonev, nev, telefon, email, felvetel_ideje FROM Orokbefogadok";
-    private static final String INSERT_OROKBEFOGADO = "";
+    private static final String INSERT_OROKBEFOGADO = "INSERT INTO Orokbefogadok VALUES(?,?,?,?,?,datetime('now'))";
+    private static final String DELETE_OROKBEFOGADO = "DELETE FROM Orokbefogadok WHERE felhasznalonev = (?) ";
 
 
     @Override
     public boolean addOrokbefogado(Orokbefogado orokbefogado) {
+
+        try (Connection conn = DriverManager.getConnection(CONN_STR);
+             PreparedStatement st = conn.prepareStatement(INSERT_OROKBEFOGADO)
+        ) {
+            st.setString(1, orokbefogado.getFelhasznalonev());
+            st.setString(2, orokbefogado.getJelszo());
+            st.setString(3, orokbefogado.getNev());
+            st.setString(4, orokbefogado.getTelefonszam());
+            st.setString(5, orokbefogado.getEmail());
+
+            int res = st.executeUpdate();
+            if (res == 1) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 
@@ -48,6 +63,21 @@ public class OrokbefogadoDAOImpl implements OrokbefogadoDAO {
 
     @Override
     public boolean deleteOrokbefogado(Orokbefogado orokbefogado) {
+
+        try (Connection conn = DriverManager.getConnection(CONN_STR);
+             PreparedStatement st = conn.prepareStatement(DELETE_OROKBEFOGADO)
+        ) {
+            st.setString(1,orokbefogado.getFelhasznalonev());
+            int res = st.executeUpdate();
+            if (res == 1) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
+
+
+
 }

@@ -182,7 +182,7 @@ public class Allat implements Serializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-    this.photo.set(img);
+        this.photo.set(img);
     }
 
 

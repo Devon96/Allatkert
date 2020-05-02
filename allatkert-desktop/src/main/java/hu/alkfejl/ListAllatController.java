@@ -68,7 +68,7 @@ public class ListAllatController implements Initializable {
                     deleteBtn.setOnAction(event -> {
                         Allat a = getTableView().getItems().get(getIndex());
                         deleteAllat(a);
-                        refreshTable();
+                       // refreshTable();
                     });
                 }
                 @Override

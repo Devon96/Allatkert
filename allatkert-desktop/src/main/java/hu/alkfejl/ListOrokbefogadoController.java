@@ -7,8 +7,7 @@ import hu.alkfejl.allatkert.model.bean.Orokbefogado;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
@@ -31,9 +30,18 @@ public class ListOrokbefogadoController implements Initializable {
     private TableColumn<Orokbefogado, String> emailCol;
     @FXML
     private TableColumn<Orokbefogado, String> idopontCol;
+    @FXML
+    public TableColumn<Orokbefogado, Void> torlesCol;
 
 
     public ListOrokbefogadoController() {
+    }
+
+
+    @FXML
+    public void refreshTable(){
+        List<Orokbefogado> list = OrokbefogadoController.getInstance().listOrokbefogado();
+        table.setItems(FXCollections.observableList(list));
     }
 
     @Override
@@ -48,6 +56,40 @@ public class ListOrokbefogadoController implements Initializable {
         idopontCol.setCellValueFactory(new PropertyValueFactory<>("felvetelIdeje"));
 
 
+        torlesCol.setCellFactory(param -> {
+            return new TableCell<>(){
+                private final Button deleteBtn = new Button("Törlés");
+                {
+                    deleteBtn.setOnAction(event -> {
+                        Orokbefogado o = getTableView().getItems().get(getIndex());
+                        deleteOrokbefogado(o);
+                    });
+                }
+                @Override
+                protected void updateItem(Void item, boolean empty){
+                    super.updateItem(item, empty);
+                    if(empty){
+                        setGraphic(null);
+                    }else{
+                        setGraphic(deleteBtn);
+                    }
+                }
+            };
+        });
+
+
+
+    }
+
+
+
+    private void deleteOrokbefogado(Orokbefogado orokbefogado){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Biztos vagy benne hogy ki akarod törölni ezt a felhasználót: '" + orokbefogado.getFelhasznalonev() + "'", ButtonType.YES, ButtonType.NO);
+        alert.showAndWait().ifPresent(buttonType -> {
+            if(buttonType.equals(ButtonType.YES)){
+                OrokbefogadoController.getInstance().deleteOrokbefogado(orokbefogado);
+            }
+        });
     }
 
 
