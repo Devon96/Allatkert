@@ -6,10 +6,19 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
 
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
+
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Base64;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -24,13 +33,13 @@ public class ListAllatController implements Initializable {
     @FXML
     private TableColumn<Allat, String> fajCol;
     @FXML
-    private TableColumn<Allat, String> kepCol;
-    @FXML
     private TableColumn<Allat, String> bemutatkozasCol;
     @FXML
     private TableColumn<Allat, Integer> szuletesCol;
     @FXML
     private TableColumn<Allat, Void> torlesCol;
+    @FXML
+    private TableColumn<Allat, Image> photoCol;
 
     public ListAllatController(){}
 
@@ -48,11 +57,9 @@ public class ListAllatController implements Initializable {
         azonositoCol.setCellValueFactory(new PropertyValueFactory<>("azonosito"));
         nevCol.setCellValueFactory(new PropertyValueFactory<>("nev"));
         fajCol.setCellValueFactory(new PropertyValueFactory<>("faj"));
-        kepCol.setCellValueFactory(new PropertyValueFactory<>("kep"));
         bemutatkozasCol.setCellValueFactory(new PropertyValueFactory<>("bemutatkozas"));
         szuletesCol.setCellValueFactory(new PropertyValueFactory<>("szuletesiEv"));
-
-
+        photoCol.setCellValueFactory(new PropertyValueFactory<>("photo"));
 
         torlesCol.setCellFactory(param -> {
             return new TableCell<>(){
@@ -64,7 +71,6 @@ public class ListAllatController implements Initializable {
                         refreshTable();
                     });
                 }
-
                 @Override
                 protected void updateItem(Void item, boolean empty){
                     super.updateItem(item, empty);
@@ -76,6 +82,35 @@ public class ListAllatController implements Initializable {
                 }
             };
         });
+
+
+        photoCol.setCellFactory(param -> {
+
+            ImageView imageView = new ImageView();
+            imageView.setFitHeight(100);
+            imageView.setFitWidth(100);
+
+            TableCell<Allat, Image> cell = new TableCell<>(){
+                @Override
+                public void updateItem(Image item, boolean empty){
+                    super.updateItem(item, empty);
+
+                    if(item != null){
+                        imageView.setImage(item);
+                    }
+                }
+            };
+            cell.setGraphic(imageView);
+            return cell;
+        });
+
+
+
+
+
+
+
+
 
 
 

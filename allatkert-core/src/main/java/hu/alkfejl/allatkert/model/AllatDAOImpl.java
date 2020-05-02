@@ -11,6 +11,7 @@ public class AllatDAOImpl implements AllatDAO {
     private static final String CONN_STR = "jdbc:sqlite:/opt/tomcat/bin/allatkert.db";
     private static final String SELECT_ALL_ALLAT = "SELECT * FROM Allatok";
     private static final String INSERT_ALLAT = "INSERT INTO Allatok(nev,faj,fenykep,bemutatkozas,szuletesi_ev) VALUES (?,?,?,?,?)";
+    private static final String INSERT_ALLAT_DEFAULT = "INSERT INTO Allatok(nev,faj,bemutatkozas,szuletesi_ev) VALUES (?,?,?,?)";
     private static final String DELETE_ALLAT = "DELETE FROM Allatok WHERE azonosito = ?";
 
 
@@ -26,22 +27,41 @@ public class AllatDAOImpl implements AllatDAO {
     @Override
     public boolean addAllat(Allat allat) {
 
-        try (Connection conn = DriverManager.getConnection(CONN_STR);
-             PreparedStatement st = conn.prepareStatement(INSERT_ALLAT)
-        ) {
-            st.setString(1, allat.getNev());
-            st.setString(2, allat.getFaj());
-            st.setString(3, allat.getKep());
-            st.setString(4, allat.getBemutatkozas());
-            st.setInt(5,allat.getSzuletesiEv());
+        if(allat.getKep() != null && !(allat.getKep().isEmpty())){
+            try (Connection conn = DriverManager.getConnection(CONN_STR);
+                 PreparedStatement st = conn.prepareStatement(INSERT_ALLAT)
+            ) {
+                st.setString(1, allat.getNev());
+                st.setString(2, allat.getFaj());
+                st.setString(3, allat.getKep());
+                st.setString(4, allat.getBemutatkozas());
+                st.setInt(5,allat.getSzuletesiEv());
 
-            int res = st.executeUpdate();
-            if (res == 1) {
-                return true;
+                int res = st.executeUpdate();
+                if (res == 1) {
+                    return true;
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        }else{
+            try (Connection conn = DriverManager.getConnection(CONN_STR);
+                 PreparedStatement st = conn.prepareStatement(INSERT_ALLAT_DEFAULT)
+            ) {
+                st.setString(1, allat.getNev());
+                st.setString(2, allat.getFaj());
+                st.setString(3, allat.getBemutatkozas());
+                st.setInt(4,allat.getSzuletesiEv());
+
+                int res = st.executeUpdate();
+                if (res == 1) {
+                    return true;
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
+
         return false;
 
 

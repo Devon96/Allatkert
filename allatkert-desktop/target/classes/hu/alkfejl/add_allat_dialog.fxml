@@ -14,7 +14,7 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
@@ -26,7 +26,7 @@
         <Label text="Születési év" GridPane.rowIndex="4" />
         <TextField fx:id="nevField" GridPane.columnIndex="1" />
         <TextField fx:id="fajField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-        <TextField fx:id="kepField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Button fx:id="photoUpload" mnemonicParsing="false" text="Kép feltöltése" GridPane.columnIndex="1" GridPane.rowIndex="2" />
         <TextField fx:id="bemutatkozasField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
         <Spinner fx:id="birthYearSpinner" GridPane.columnIndex="1" GridPane.rowIndex="4" />
 
@@ -36,7 +36,8 @@
                 <Insets />
             </opaqueInsets>
         </Button>
-        <Button fx:id="addButton" mnemonicParsing="false" onAction="#save"  text="OK" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+        <Button fx:id="addButton" mnemonicParsing="false" onAction="#save" text="OK" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+
 
     </children>
     <opaqueInsets>

@@ -2,7 +2,20 @@ package hu.alkfejl.allatkert.model.bean;
 
 import javafx.beans.property.*;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.Serializable;
+import java.sql.Blob;
+import java.util.Base64;
+
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.PixelWriter;
+import javafx.scene.image.WritableImage;
+
+import javax.imageio.ImageIO;
 
 public class Allat implements Serializable {
 
@@ -13,6 +26,21 @@ public class Allat implements Serializable {
     private StringProperty kep = new SimpleStringProperty();
     private StringProperty bemutatkozas = new SimpleStringProperty();
     private IntegerProperty szuletesiEv = new SimpleIntegerProperty();
+    private ObjectProperty<Image> photo = new SimpleObjectProperty<>();
+
+
+
+    public Image getPhoto() {
+        return photo.get();
+    }
+
+    public ObjectProperty<Image> photoProperty() {
+        return photo;
+    }
+
+    public void setPhoto(Image photo) {
+        this.photo.set(photo);
+    }
 
     public Allat() {
     }
@@ -28,7 +56,7 @@ public class Allat implements Serializable {
                 ", szuletesiEv=" + szuletesiEv +
                 '}';
     }
-
+/*
     public Allat(IntegerProperty azonosito, StringProperty nev, StringProperty faj, StringProperty kep, StringProperty bemutatkozas, IntegerProperty szuletesiEv) {
         this.azonosito = azonosito;
         this.nev = nev;
@@ -37,7 +65,7 @@ public class Allat implements Serializable {
         this.bemutatkozas = bemutatkozas;
         this.szuletesiEv = szuletesiEv;
     }
-
+*/
     public static long getSerialVersionUID() {
         return serialVersionUID.get();
     }
@@ -121,7 +149,7 @@ public class Allat implements Serializable {
     public void setSzuletesiEv(int szuletesiEv) {
         this.szuletesiEv.set(szuletesiEv);
     }
-
+/*
     public Allat(int azonosito, String nev, String faj, String kep, String bemutatkozas, int szuletesiEv) {
         this.azonosito.set(azonosito);
         this.nev.set(nev);
@@ -130,4 +158,54 @@ public class Allat implements Serializable {
         this.bemutatkozas.set(bemutatkozas);
         this.szuletesiEv.set(szuletesiEv);
     }
+*/
+    public Allat(int azonosito, String nev, String faj, String kep, String bemutatkozas, int szuletesiEv) {
+        this.azonosito.set(azonosito);
+        this.nev.set(nev);
+        this.faj.set(faj);
+        this.kep.set(kep);
+        this.bemutatkozas.set(bemutatkozas);
+        this.szuletesiEv.set(szuletesiEv);
+
+
+            System.out.println("A kod ->>>>>>>>>>>>>> " + kep);
+            byte[] decodedBytes = Base64
+                    .getDecoder()
+                    .decode(kep);
+            ByteArrayInputStream bais = new ByteArrayInputStream(decodedBytes);
+            BufferedImage image = null;
+            Image img = null;
+            try {
+                image = ImageIO.read(bais);
+                img = convertToFxImage(image);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+    this.photo.set(img);
+    }
+
+
+
+    private static Image convertToFxImage(BufferedImage image) {
+        WritableImage wr = null;
+        if (image != null) {
+            wr = new WritableImage(image.getWidth(), image.getHeight());
+            PixelWriter pw = wr.getPixelWriter();
+            for (int x = 0; x < image.getWidth(); x++) {
+                for (int y = 0; y < image.getHeight(); y++) {
+                    pw.setArgb(x, y, image.getRGB(x, y));
+                }
+            }
+        }
+        return new ImageView(wr).getImage();
+    }
+
+
+
+
+
+
+
+
 }
