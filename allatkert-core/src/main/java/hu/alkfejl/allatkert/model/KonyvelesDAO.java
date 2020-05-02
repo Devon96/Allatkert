@@ -11,7 +11,7 @@ public interface KonyvelesDAO {
     boolean addKonyveles(Konyveles konyveles);
     List<Konyveles> listKonyveles();
     boolean updateKonyveles(Konyveles konyveles);
-    boolean deleteAllat(Konyveles konyveles);
+    boolean deleteKonyveles(Konyveles konyveles);
 
 
 }

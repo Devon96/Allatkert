@@ -7,14 +7,17 @@ import java.io.Serializable;
 public class Konyveles implements Serializable {
 
     private static final LongProperty serialVersionUID = new SimpleLongProperty(-7140401042409163579L);
-    private ObjectProperty<Allat> orokbefogadott = new SimpleObjectProperty<>();
-    private ObjectProperty<Orokbefogado> orokbefogado = new SimpleObjectProperty<>();
+    private IntegerProperty konyvelesID = new SimpleIntegerProperty();
+    // private ObjectProperty<Allat> orokbefogadott = new SimpleObjectProperty<>();
+   // private ObjectProperty<Orokbefogado> orokbefogado = new SimpleObjectProperty<>();
     private StringProperty orokbefogadasIdeje = new SimpleStringProperty();
     private StringProperty leiras = new SimpleStringProperty();
     private StringProperty tamogatasTipusa = new SimpleStringProperty();
     private IntegerProperty tamogatasOsszege = new SimpleIntegerProperty();
     private IntegerProperty tamogatasMennyisege = new SimpleIntegerProperty();
     private StringProperty gyakorisag = new SimpleStringProperty();
+    private StringProperty felhasznalonev = new SimpleStringProperty();
+    private IntegerProperty azonosito = new SimpleIntegerProperty();
 
     public Konyveles() {
     }
@@ -34,18 +37,33 @@ public class Konyveles implements Serializable {
         Konyveles.serialVersionUID.set(serialVersionUID);
     }
 
-    public Allat getOrokbefogadott() {
-        return orokbefogadott.get();
+
+    public int getKonyvelesID() {
+        return konyvelesID.get();
     }
 
-    public ObjectProperty<Allat> orokbefogadottProperty() {
-        return orokbefogadott;
+    public IntegerProperty konyvelesIDProperty() {
+        return konyvelesID;
     }
 
-    public void setOrokbefogadott(Allat orokbefogadott) {
-        this.orokbefogadott.set(orokbefogadott);
+    public void setKonyvelesID(int konyvelesID) {
+        this.konyvelesID.set(konyvelesID);
     }
 
+    /*
+        public Allat getOrokbefogadott() {
+            return orokbefogadott.get();
+        }
+
+        public ObjectProperty<Allat> orokbefogadottProperty() {
+            return orokbefogadott;
+        }
+
+        public void setOrokbefogadott(Allat orokbefogadott) {
+            this.orokbefogadott.set(orokbefogadott);
+        }
+    */
+/*
     public Orokbefogado getOrokbefogado() {
         return orokbefogado.get();
     }
@@ -57,7 +75,7 @@ public class Konyveles implements Serializable {
     public void setOrokbefogado(Orokbefogado orokbefogado) {
         this.orokbefogado.set(orokbefogado);
     }
-
+*/
     public String getOrokbefogadasIdeje() {
         return orokbefogadasIdeje.get();
     }
@@ -128,5 +146,54 @@ public class Konyveles implements Serializable {
 
     public void setGyakorisag(String gyakorisag) {
         this.gyakorisag.set(gyakorisag);
+    }
+
+    public String getFelhasznalonev() {
+        return felhasznalonev.get();
+    }
+
+    public StringProperty felhasznalonevProperty() {
+        return felhasznalonev;
+    }
+
+    public void setFelhasznalonev(String felhasznalonev) {
+        this.felhasznalonev.set(felhasznalonev);
+    }
+
+    public int getAzonosito() {
+        return azonosito.get();
+    }
+
+    public IntegerProperty azonositoProperty() {
+        return azonosito;
+    }
+
+    public void setAzonosito(int azonosito) {
+        this.azonosito.set(azonosito);
+    }
+
+    public Konyveles(int konyvelesID, String felhasznalonev, int azonosito, String orokbefogadasIdeje, String leiras, String tamogatasTipusa, int tamogatasOsszege, int tamogatasMennyisege, String gyakorisag) {
+        this.konyvelesID.set(konyvelesID);
+        this.felhasznalonev.set(felhasznalonev);
+        this.azonosito.set(azonosito);
+        this.orokbefogadasIdeje.set(orokbefogadasIdeje);
+        this.leiras.set(leiras);
+        this.tamogatasTipusa.set(tamogatasTipusa);
+        this.tamogatasOsszege.set(tamogatasOsszege);
+        this.tamogatasMennyisege.set(tamogatasMennyisege);
+        this.gyakorisag.set(gyakorisag);
+    }
+
+    public Konyveles(StringProperty felhasznalonev, IntegerProperty azonosito, IntegerProperty konyvelesID, StringProperty orokbefogadasIdeje, StringProperty leiras, StringProperty tamogatasTipusa, IntegerProperty tamogatasOsszege, IntegerProperty tamogatasMennyisege, StringProperty gyakorisag) {
+        this.konyvelesID = konyvelesID;
+        this.felhasznalonev = felhasznalonev;
+        this.azonosito = azonosito;
+        this.orokbefogadasIdeje = orokbefogadasIdeje;
+        this.leiras = leiras;
+        this.tamogatasTipusa = tamogatasTipusa;
+        this.tamogatasOsszege = tamogatasOsszege;
+        this.tamogatasMennyisege = tamogatasMennyisege;
+        this.gyakorisag = gyakorisag;
+
     }
 }

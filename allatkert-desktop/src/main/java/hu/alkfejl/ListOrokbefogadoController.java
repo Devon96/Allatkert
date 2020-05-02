@@ -65,7 +65,6 @@ public class ListOrokbefogadoController implements Initializable {
         torlesCol.setCellFactory(param -> {
             return new TableCell<>(){
                 private final Button deleteBtn = new Button("Törlés");
-                private final Button editBtn = new Button("Szerkesztés");
                 {
                     deleteBtn.setOnAction(event -> {
                         Orokbefogado o = getTableView().getItems().get(getIndex());
@@ -173,11 +172,5 @@ public class ListOrokbefogadoController implements Initializable {
     public void addOrokbefogado() throws IOException{
         App.setDialog("add_orokbefogado_dialog");
     }
-
-    @FXML
-    public void updateOrokbefogado() throws IOException{
-        App.setDialog("update_orokbefogado_dialog");
-    }
-
 
 }
