@@ -6,13 +6,15 @@ import hu.alkfejl.allatkert.model.bean.Orokbefogado;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class OrokbefogadoDAOImpl implements OrokbefogadoDAO {
 
     private static final String CONN_STR = "jdbc:sqlite:/opt/tomcat/bin/allatkert.db";
     private static final String SELECT_ALL_OROKBEFOGADO = "SELECT felhasznalonev, nev, telefon, email, felvetel_ideje FROM Orokbefogadok";
     private static final String INSERT_OROKBEFOGADO = "INSERT INTO Orokbefogadok VALUES(?,?,?,?,?,datetime('now'))";
-    private static final String DELETE_OROKBEFOGADO = "DELETE FROM Orokbefogadok WHERE felhasznalonev = (?) ";
+    private static final String DELETE_OROKBEFOGADO = "DELETE FROM Orokbefogadok WHERE felhasznalonev = (?)";
+    private static final String UPDATE_OROKBEFOGADO = "UPDATE Orokbefogadok SET jelszo=?, nev=?, telefon=?, email=? WHERE felhasznalonev=?";
 
 
     @Override
@@ -58,6 +60,21 @@ public class OrokbefogadoDAOImpl implements OrokbefogadoDAO {
 
     @Override
     public boolean updateOrokbefogado(Orokbefogado orokbefogado) {
+
+        try (Connection conn = DriverManager.getConnection(CONN_STR);
+             PreparedStatement st = conn.prepareStatement(UPDATE_OROKBEFOGADO)
+        ) {
+            st.setString(1, orokbefogado.getJelszo());
+            st.setString(2, orokbefogado.getNev());
+            st.setString(3, orokbefogado.getTelefonszam());
+            st.setString(4, orokbefogado.getEmail());
+            st.setString(5, orokbefogado.getFelhasznalonev());
+
+            int res = st.executeUpdate();
+            return res == 1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 

@@ -59,11 +59,19 @@ public class ListOrokbefogadoController implements Initializable {
         torlesCol.setCellFactory(param -> {
             return new TableCell<>(){
                 private final Button deleteBtn = new Button("Törlés");
+                private final Button editBtn = new Button("Szerkesztés");
                 {
                     deleteBtn.setOnAction(event -> {
                         Orokbefogado o = getTableView().getItems().get(getIndex());
                         deleteOrokbefogado(o);
                     });
+
+                    editBtn.setOnAction(event -> {
+                        Orokbefogado o = getTableView().getItems().get(getIndex());
+                        //editPerson(p);
+                        refreshTable();
+                    });
+
                 }
                 @Override
                 protected void updateItem(Void item, boolean empty){
