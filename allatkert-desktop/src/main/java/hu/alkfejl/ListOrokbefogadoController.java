@@ -6,9 +6,14 @@ import hu.alkfejl.allatkert.model.bean.Allat;
 import hu.alkfejl.allatkert.model.bean.Orokbefogado;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -32,6 +37,8 @@ public class ListOrokbefogadoController implements Initializable {
     private TableColumn<Orokbefogado, String> idopontCol;
     @FXML
     public TableColumn<Orokbefogado, Void> torlesCol;
+    @FXML
+    public TableColumn<Orokbefogado, Void> modositasCol;
 
 
     public ListOrokbefogadoController() {
@@ -55,7 +62,6 @@ public class ListOrokbefogadoController implements Initializable {
         emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
         idopontCol.setCellValueFactory(new PropertyValueFactory<>("felvetelIdeje"));
 
-
         torlesCol.setCellFactory(param -> {
             return new TableCell<>(){
                 private final Button deleteBtn = new Button("Törlés");
@@ -65,13 +71,6 @@ public class ListOrokbefogadoController implements Initializable {
                         Orokbefogado o = getTableView().getItems().get(getIndex());
                         deleteOrokbefogado(o);
                     });
-
-                    editBtn.setOnAction(event -> {
-                        Orokbefogado o = getTableView().getItems().get(getIndex());
-                        //editPerson(p);
-                        refreshTable();
-                    });
-
                 }
                 @Override
                 protected void updateItem(Void item, boolean empty){
@@ -87,6 +86,36 @@ public class ListOrokbefogadoController implements Initializable {
 
 
 
+        modositasCol.setCellFactory(param -> {
+            return new TableCell<>(){
+                private final Button editBtn = new Button("Szerkesztés");
+                {
+                    editBtn.setOnAction(event -> {
+                        Orokbefogado o = getTableView().getItems().get(getIndex());
+                        editOrokbefogado(o);
+                        refreshTable();
+                    });
+                }
+                @Override
+                protected void updateItem(Void item, boolean empty){
+                    super.updateItem(item, empty);
+                    if(empty){
+                        setGraphic(null);
+                    }else{
+                        setGraphic(editBtn);
+                    }
+                }
+            };
+        });
+
+
+
+
+
+
+
+
+
     }
 
 
@@ -98,6 +127,26 @@ public class ListOrokbefogadoController implements Initializable {
                 OrokbefogadoController.getInstance().deleteOrokbefogado(orokbefogado);
             }
         });
+    }
+
+    private void editOrokbefogado(Orokbefogado obf) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/hu/alkfejl/update_orokbefogado_dialog.fxml"));
+            Parent root = loader.load();
+            UpdateOrokbefogadoController controller = loader.getController();
+            controller.initOrokbefogado(obf);
+
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 
@@ -123,6 +172,11 @@ public class ListOrokbefogadoController implements Initializable {
     @FXML
     public void addOrokbefogado() throws IOException{
         App.setDialog("add_orokbefogado_dialog");
+    }
+
+    @FXML
+    public void updateOrokbefogado() throws IOException{
+        App.setDialog("update_orokbefogado_dialog");
     }
 
 

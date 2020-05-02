@@ -32,9 +32,10 @@
                 <TableColumn fx:id="emailCol" prefWidth="84.0" text="Email" />
                 <TableColumn fx:id="idopontCol" prefWidth="125.0" text="Felvétel időpontja" />
                 <TableColumn fx:id="torlesCol" prefWidth="125.0" text="Törlés" />
+                <TableColumn fx:id="modositasCol" prefWidth="125.0" text="Módosítás" />
             </columns>
         </TableView>
-      <Button onAction="#refreshTable" layoutX="28.0" layoutY="318.0" mnemonicParsing="false" text="Frissítés" />
+      <Button layoutX="28.0" layoutY="318.0" mnemonicParsing="false" onAction="#refreshTable" text="Frissítés" />
     </children>
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

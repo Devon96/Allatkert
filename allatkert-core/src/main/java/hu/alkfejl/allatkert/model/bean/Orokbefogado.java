@@ -128,7 +128,13 @@ public class Orokbefogado implements Serializable {
         this.felvetelIdeje.set(felvetelIdeje);
     }
 
-
+    public void copyTo(Orokbefogado target){
+        target.setFelhasznalonev(this.getFelhasznalonev());
+        target.setNev(this.getNev());
+        target.setTelefonszam(this.getTelefonszam());
+        target.setEmail(this.getEmail());
+        target.setFelvetelIdeje(this.getFelvetelIdeje());
+    }
 
 
 
