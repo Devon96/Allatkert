@@ -46,7 +46,7 @@ public class OrokbefogadoDAOImpl implements OrokbefogadoDAO {
 
         try(Connection conn = DriverManager.getConnection(CONN_STR);
             Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery(SELECT_ALL_OROKBEFOGADO);
+            ResultSet rs = st.executeQuery(SELECT_ALL_OROKBEFOGADO)
         ){
             while(rs.next()){
                 Orokbefogado orokbefogado = new Orokbefogado(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5));

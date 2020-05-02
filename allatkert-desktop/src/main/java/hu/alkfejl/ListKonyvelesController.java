@@ -7,8 +7,7 @@ import hu.alkfejl.allatkert.model.bean.Orokbefogado;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
@@ -67,8 +66,39 @@ public class ListKonyvelesController implements Initializable {
         gyakorisagCol.setCellValueFactory(new PropertyValueFactory<>("gyakorisag"));
 
 
+        torlesCol.setCellFactory(param -> {
+            return new TableCell<>(){
+                private final Button deleteBtn = new Button("Törlés");
+                {
+                    deleteBtn.setOnAction(event -> {
+                        Konyveles k = getTableView().getItems().get(getIndex());
+                        deleteKonyveles(k);
+                    });
+                }
+                @Override
+                protected void updateItem(Void item, boolean empty){
+                    super.updateItem(item, empty);
+                    if(empty){
+                        setGraphic(null);
+                    }else{
+                        setGraphic(deleteBtn);
+                    }
+                }
+            };
+        });
 
 
+
+
+    }
+
+    private void deleteKonyveles(Konyveles konyveles){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Biztos vagy benne hogy ki akarod törölni ezt az ID-jű könyvelést: '" + konyveles.getKonyvelesID() + "'", ButtonType.YES, ButtonType.NO);
+        alert.showAndWait().ifPresent(buttonType -> {
+            if(buttonType.equals(ButtonType.YES)){
+                KonyvelesController.getInstance().deleteKonyveles(konyveles);
+            }
+        });
     }
 
     @FXML

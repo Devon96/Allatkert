@@ -3,10 +3,7 @@ package hu.alkfejl.allatkert.model;
 import hu.alkfejl.allatkert.model.bean.Konyveles;
 import hu.alkfejl.allatkert.model.bean.Orokbefogado;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +20,25 @@ public class KonyvelesDAOImpl implements KonyvelesDAO {
 
     @Override
     public boolean addKonyveles(Konyveles konyveles) {
+
+        try (Connection conn = DriverManager.getConnection(CONN_STR);
+             PreparedStatement st = conn.prepareStatement(INSERT_KONYVELES)
+        ) {
+            st.setString(1, konyveles.getFelhasznalonev());
+            st.setInt(2, konyveles.getAzonosito());
+            st.setString(3, konyveles.getLeiras());
+            st.setString(4, konyveles.getTamogatasTipusa());
+            st.setInt(5, konyveles.getTamogatasOsszege());
+            st.setInt(6, konyveles.getTamogatasMennyisege());
+            st.setString(7, konyveles.getGyakorisag());
+
+            int res = st.executeUpdate();
+            if (res == 1) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 
@@ -33,7 +49,7 @@ public class KonyvelesDAOImpl implements KonyvelesDAO {
 
         try(Connection conn = DriverManager.getConnection(CONN_STR);
             Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery(SELECT_ALL_KONYVELES);
+            ResultSet rs = st.executeQuery(SELECT_ALL_KONYVELES)
         ){
             while(rs.next()){
                 Konyveles konyveles = new Konyveles(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),
@@ -44,17 +60,48 @@ public class KonyvelesDAOImpl implements KonyvelesDAO {
             e.printStackTrace();
         }
         return result;
-
-
     }
 
     @Override
     public boolean updateKonyveles(Konyveles konyveles) {
+
+        try (Connection conn = DriverManager.getConnection(CONN_STR);
+             PreparedStatement st = conn.prepareStatement(UPDATE_KONYVELES)
+        ) {
+            st.setString(1, konyveles.getFelhasznalonev());
+            st.setInt(2, konyveles.getAzonosito());
+            st.setString(3, konyveles.getOrokbefogadasIdeje());
+            st.setString(4, konyveles.getLeiras());
+            st.setString(5, konyveles.getTamogatasTipusa());
+            st.setInt(6, konyveles.getTamogatasOsszege());
+            st.setInt(7, konyveles.getTamogatasMennyisege());
+            st.setString(8, konyveles.getGyakorisag());
+            st.setInt(9, konyveles.getKonyvelesID());
+
+            int res = st.executeUpdate();
+            return res == 1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 
     @Override
     public boolean deleteKonyveles(Konyveles konyveles) {
+
+        try (Connection conn = DriverManager.getConnection(CONN_STR);
+             PreparedStatement st = conn.prepareStatement(DELETE_KONYVELES)
+        ) {
+            st.setInt(1,konyveles.getKonyvelesID());
+            int res = st.executeUpdate();
+            if (res == 1) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
+
+
 }

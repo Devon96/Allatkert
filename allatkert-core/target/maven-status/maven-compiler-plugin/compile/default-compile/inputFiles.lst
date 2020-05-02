@@ -1,11 +1,13 @@
+/home/ntlndj93/IdeaProjects/Allatkert/allatkert-core/src/main/java/hu/alkfejl/allatkert/model/KonyvelesDAOImpl.java
 /home/ntlndj93/IdeaProjects/Allatkert/allatkert-core/src/main/java/hu/alkfejl/allatkert/model/bean/Orokbefogado.java
+/home/ntlndj93/IdeaProjects/Allatkert/allatkert-core/src/main/java/hu/alkfejl/allatkert/controller/KonyvelesController.java
 /home/ntlndj93/IdeaProjects/Allatkert/allatkert-core/src/main/java/hu/alkfejl/allatkert/model/AllatDAOImpl.java
-/home/ntlndj93/IdeaProjects/Allatkert/allatkert-core/src/main/java/hu/alkfejl/allatkert/model/OrokbefogadoDAOImpl.java
 /home/ntlndj93/IdeaProjects/Allatkert/allatkert-core/src/main/java/hu/alkfejl/allatkert/model/KonyvelesDAO.java
 /home/ntlndj93/IdeaProjects/Allatkert/allatkert-core/src/main/java/module-info.java
-/home/ntlndj93/IdeaProjects/Allatkert/allatkert-core/src/main/java/hu/alkfejl/allatkert/model/AllatDAO.java
 /home/ntlndj93/IdeaProjects/Allatkert/allatkert-core/src/main/java/hu/alkfejl/allatkert/model/bean/Allat.java
-/home/ntlndj93/IdeaProjects/Allatkert/allatkert-core/src/main/java/hu/alkfejl/allatkert/controller/AllatController.java
 /home/ntlndj93/IdeaProjects/Allatkert/allatkert-core/src/main/java/hu/alkfejl/allatkert/controller/OrokbefogadoController.java
-/home/ntlndj93/IdeaProjects/Allatkert/allatkert-core/src/main/java/hu/alkfejl/allatkert/model/bean/Konyveles.java
 /home/ntlndj93/IdeaProjects/Allatkert/allatkert-core/src/main/java/hu/alkfejl/allatkert/model/OrokbefogadoDAO.java
+/home/ntlndj93/IdeaProjects/Allatkert/allatkert-core/src/main/java/hu/alkfejl/allatkert/model/OrokbefogadoDAOImpl.java
+/home/ntlndj93/IdeaProjects/Allatkert/allatkert-core/src/main/java/hu/alkfejl/allatkert/model/AllatDAO.java
+/home/ntlndj93/IdeaProjects/Allatkert/allatkert-core/src/main/java/hu/alkfejl/allatkert/controller/AllatController.java
+/home/ntlndj93/IdeaProjects/Allatkert/allatkert-core/src/main/java/hu/alkfejl/allatkert/model/bean/Konyveles.java
