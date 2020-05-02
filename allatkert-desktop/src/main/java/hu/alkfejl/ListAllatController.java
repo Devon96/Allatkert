@@ -150,4 +150,8 @@ public class ListAllatController implements Initializable {
     public void addOrokbefogado() throws IOException{
         App.setDialog("add_orokbefogado_dialog");
     }
+    @FXML
+    public void addKonyveles() throws IOException{
+        App.setDialog("add_konyveles_dialog");
+    }
 }

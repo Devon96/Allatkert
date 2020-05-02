@@ -47,7 +47,11 @@ public class ListKonyvelesController implements Initializable {
     }
 
 
-
+    @FXML
+    public void refreshTable(){
+        List<Konyveles> list = KonyvelesController.getInstance().listKonyveles();
+        table.setItems(FXCollections.observableList(list));
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -120,5 +124,9 @@ public class ListKonyvelesController implements Initializable {
     @FXML
     public void addOrokbefogado() throws IOException{
         App.setDialog("add_orokbefogado_dialog");
+    }
+    @FXML
+    public void addKonyveles() throws IOException{
+        App.setDialog("add_konyveles_dialog");
     }
 }

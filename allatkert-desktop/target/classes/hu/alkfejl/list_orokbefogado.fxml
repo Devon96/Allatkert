@@ -8,18 +8,18 @@
     <children>
         <MenuBar maxWidth="1.7976931348623157E308" prefHeight="15.0" prefWidth="600.0">
             <menus>
-                <Menu mnemonicParsing="false" text="Listazas">
+                <Menu mnemonicParsing="false" text="Listázás">
                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#switchToListAllat" text="Allatok" />
-                        <MenuItem mnemonicParsing="false" onAction="#switchToListOrokbefogado" text="Orokbefogadok" />
-                        <MenuItem mnemonicParsing="false" onAction="#switchToListKonyveles" text="Konyvelesek" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchToListAllat" text="Állatok listázása" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchToListOrokbefogado" text="Örökbefogadók listázása" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchToListKonyveles" text="Könyvelések listázása" />
                     </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Beszuras">
+                <Menu mnemonicParsing="false" text="Beszúrás">
                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#addAllat" text="Uj allat hozzaadasa" />
-                        <MenuItem mnemonicParsing="false" onAction="#addOrokbefogado" text="Uj orokbefogado hozzaadasa" />
-                        <MenuItem mnemonicParsing="false" text="Uj konyveles hozzaadasa" />
+                        <MenuItem mnemonicParsing="false" onAction="#addAllat" text="Új állat hozzáadása" />
+                        <MenuItem mnemonicParsing="false" onAction="#addOrokbefogado" text="Új örökbefogadó hozzáadása" />
+                        <MenuItem mnemonicParsing="false" onAction="#addKonyveles" text="Új könyvelés hozzáadása" />
                     </items>
                 </Menu>
             </menus>
