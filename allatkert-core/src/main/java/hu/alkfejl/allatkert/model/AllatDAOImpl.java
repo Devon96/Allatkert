@@ -64,15 +64,7 @@ public class AllatDAOImpl implements AllatDAO {
                 e.printStackTrace();
             }
         }
-
         return false;
-
-
-
-
-
-
-
     }
 
     @Override

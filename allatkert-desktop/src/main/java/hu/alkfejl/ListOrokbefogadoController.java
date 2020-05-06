@@ -23,6 +23,7 @@ import java.util.ResourceBundle;
 public class ListOrokbefogadoController implements Initializable {
 
 
+
     @FXML
     private TableView<Orokbefogado> table;
     @FXML
@@ -39,6 +40,7 @@ public class ListOrokbefogadoController implements Initializable {
     public TableColumn<Orokbefogado, Void> torlesCol;
     @FXML
     public TableColumn<Orokbefogado, Void> modositasCol;
+
 
 
     public ListOrokbefogadoController() {

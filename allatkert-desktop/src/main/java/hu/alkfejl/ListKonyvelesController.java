@@ -1,7 +1,9 @@
 package hu.alkfejl;
 
+import hu.alkfejl.allatkert.controller.AllatController;
 import hu.alkfejl.allatkert.controller.KonyvelesController;
 import hu.alkfejl.allatkert.controller.OrokbefogadoController;
+import hu.alkfejl.allatkert.model.bean.Allat;
 import hu.alkfejl.allatkert.model.bean.Konyveles;
 import hu.alkfejl.allatkert.model.bean.Orokbefogado;
 import javafx.collections.FXCollections;
@@ -41,6 +43,14 @@ public class ListKonyvelesController implements Initializable {
     public TableColumn<Konyveles, Void> torlesCol;
     @FXML
     public TableColumn<Konyveles, Void> modositasCol;
+    @FXML
+    public ComboBox<String> orokbefogadoCBox;
+    @FXML
+    public ComboBox<String> orokbefogadottCBox;
+    @FXML
+    public TextField evField;
+    @FXML
+    public ComboBox<String> tipusCBox;
 
 
     public ListKonyvelesController() {
@@ -92,6 +102,22 @@ public class ListKonyvelesController implements Initializable {
         });
 
 
+        orokbefogadoCBox.getItems().addAll(KonyvelesController.getInstance().listOrokbefogadok());
+        orokbefogadottCBox.getItems().addAll(KonyvelesController.getInstance().listOrokbefogadottak());
+
+        tipusCBox.getItems().addAll(KonyvelesController.getInstance().listTamogatasTipusok());
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     }
@@ -104,6 +130,42 @@ public class ListKonyvelesController implements Initializable {
             }
         });
     }
+
+
+
+
+    @FXML
+    public void refreshToOrokbefogadoSzerint(){
+        List<Konyveles> list = KonyvelesController.getInstance().listOrokbefogadoSzerint(orokbefogadoCBox.getValue());
+        table.setItems(FXCollections.observableList(list));
+    }
+
+    @FXML
+    public void refreshToOrokbefogadottSzerint(){
+        List<Konyveles> list = KonyvelesController.getInstance().listOrokbefogadottSzerint(orokbefogadottCBox.getValue());
+        table.setItems(FXCollections.observableList(list));
+    }
+
+    @FXML
+    public void refreshToIdopontSzerint(){
+        List<Konyveles> list = KonyvelesController.getInstance().listIdopontSzerint(evField.getText());
+        table.setItems(FXCollections.observableList(list));
+    }
+
+    @FXML
+    public void refreshToTamogatasTipusSzerint(){
+        List<Konyveles> list = KonyvelesController.getInstance().listTipusSzerint(tipusCBox.getValue());
+        table.setItems(FXCollections.observableList(list));
+    }
+
+
+
+
+
+
+
+
+
 
     @FXML
     private void switchToListAllat() throws IOException {
