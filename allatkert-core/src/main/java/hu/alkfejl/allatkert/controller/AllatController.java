@@ -26,6 +26,7 @@ public class AllatController {
     public List<Allat> listAllat(){return dao.listAllat();}
     public boolean updateAllat(Allat allat){return dao.updateAllat(allat);}
     public boolean deleteAllat(Allat allat){return dao.deleteAllat(allat);}
+    public List<String> listAzonosito(){return dao.listAzonosito();}
 
 
 

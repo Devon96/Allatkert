@@ -11,10 +11,9 @@ public class KonyvelesDAOImpl implements KonyvelesDAO {
 
     private static final String CONN_STR = "jdbc:sqlite:/opt/tomcat/bin/allatkert.db";
     private static final String SELECT_ALL_KONYVELES = "SELECT id,felhasznalonev,azonosito,idopont,leiras,tipus,osszeg,mennyiseg,gyakorisag FROM Konyveles";
-    private static final String INSERT_KONYVELES= "INSERT INTO Konyveles VALUES(?,?,datetime('now'),?,?,?,?,?)";
+    private static final String INSERT_KONYVELES= "INSERT INTO Konyveles (felhasznalonev,azonosito,idopont,leiras,tipus,osszeg,mennyiseg,gyakorisag) VALUES(?,?,datetime('now'),?,?,?,?,?)";
     private static final String DELETE_KONYVELES = "DELETE FROM Konyveles WHERE id = (?)";
     private static final String UPDATE_KONYVELES = "UPDATE Konyveles SET felhasznalonev=?, azonosito=?, idopont=?, leiras=?, tipus=?, osszeg=?, mennyiseg=?, gyakorisag=? WHERE id=?";
-
 
 
 
@@ -25,11 +24,11 @@ public class KonyvelesDAOImpl implements KonyvelesDAO {
              PreparedStatement st = conn.prepareStatement(INSERT_KONYVELES)
         ) {
             st.setString(1, konyveles.getFelhasznalonev());
-            st.setInt(2, konyveles.getAzonosito());
+            st.setString(2, konyveles.getAzonosito());
             st.setString(3, konyveles.getLeiras());
             st.setString(4, konyveles.getTamogatasTipusa());
-            st.setInt(5, konyveles.getTamogatasOsszege());
-            st.setInt(6, konyveles.getTamogatasMennyisege());
+            st.setString(5, konyveles.getTamogatasOsszege());
+            st.setString(6, konyveles.getTamogatasMennyisege());
             st.setString(7, konyveles.getGyakorisag());
 
             int res = st.executeUpdate();
@@ -52,8 +51,8 @@ public class KonyvelesDAOImpl implements KonyvelesDAO {
             ResultSet rs = st.executeQuery(SELECT_ALL_KONYVELES)
         ){
             while(rs.next()){
-                Konyveles konyveles = new Konyveles(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),
-                        rs.getString(5),rs.getString(6),rs.getInt(7),rs.getInt(8),rs.getString(9));
+                Konyveles konyveles = new Konyveles(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),
+                        rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9));
                 result.add(konyveles);
             }
         }catch (Exception e){
@@ -69,12 +68,12 @@ public class KonyvelesDAOImpl implements KonyvelesDAO {
              PreparedStatement st = conn.prepareStatement(UPDATE_KONYVELES)
         ) {
             st.setString(1, konyveles.getFelhasznalonev());
-            st.setInt(2, konyveles.getAzonosito());
+            st.setString(2, konyveles.getAzonosito());
             st.setString(3, konyveles.getOrokbefogadasIdeje());
             st.setString(4, konyveles.getLeiras());
             st.setString(5, konyveles.getTamogatasTipusa());
-            st.setInt(6, konyveles.getTamogatasOsszege());
-            st.setInt(7, konyveles.getTamogatasMennyisege());
+            st.setString(6, konyveles.getTamogatasOsszege());
+            st.setString(7, konyveles.getTamogatasMennyisege());
             st.setString(8, konyveles.getGyakorisag());
             st.setInt(9, konyveles.getKonyvelesID());
 

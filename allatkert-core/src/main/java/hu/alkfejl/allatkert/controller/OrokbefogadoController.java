@@ -29,6 +29,7 @@ public class OrokbefogadoController {
     public List<Orokbefogado> listOrokbefogado(){return dao.listOrokbefogado();}
     public boolean updateOrokbefogado(Orokbefogado orokbefogado){return dao.updateOrokbefogado(orokbefogado);}
     public boolean deleteOrokbefogado(Orokbefogado orokbefogado){return dao.deleteOrokbefogado(orokbefogado);}
+    public List<String> listFelhasznalonev(){return dao.listFelhasznalonev();}
 
 
 

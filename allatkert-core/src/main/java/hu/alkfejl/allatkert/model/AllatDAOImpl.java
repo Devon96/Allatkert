@@ -13,6 +13,7 @@ public class AllatDAOImpl implements AllatDAO {
     private static final String INSERT_ALLAT = "INSERT INTO Allatok(nev,faj,fenykep,bemutatkozas,szuletesi_ev) VALUES (?,?,?,?,?)";
     private static final String INSERT_ALLAT_DEFAULT = "INSERT INTO Allatok(nev,faj,bemutatkozas,szuletesi_ev) VALUES (?,?,?,?)";
     private static final String DELETE_ALLAT = "DELETE FROM Allatok WHERE azonosito = ?";
+    private static final String SELECT_AZONOSITO = "SELECT azonosito FROM Allatok";
 
 
     public AllatDAOImpl(){
@@ -114,8 +115,21 @@ public class AllatDAOImpl implements AllatDAO {
     }
 
 
+    @Override
+    public List<String> listAzonosito() {
+        List<String> result = new ArrayList<>();
 
-
-
-
+        try(Connection conn = DriverManager.getConnection(CONN_STR);
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(SELECT_AZONOSITO)
+        ){
+            while(rs.next()){
+                String string = Integer.toString(rs.getInt(1));
+                result.add(string);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
 }

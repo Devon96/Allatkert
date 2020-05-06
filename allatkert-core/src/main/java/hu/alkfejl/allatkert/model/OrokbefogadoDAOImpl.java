@@ -15,7 +15,7 @@ public class OrokbefogadoDAOImpl implements OrokbefogadoDAO {
     private static final String INSERT_OROKBEFOGADO = "INSERT INTO Orokbefogadok VALUES(?,?,?,?,?,datetime('now'))";
     private static final String DELETE_OROKBEFOGADO = "DELETE FROM Orokbefogadok WHERE felhasznalonev = (?)";
     private static final String UPDATE_OROKBEFOGADO = "UPDATE Orokbefogadok SET jelszo=?, nev=?, telefon=?, email=? WHERE felhasznalonev=?";
-
+    private static final String SELECT_FELHASZNALONEV = "SELECT felhasznalonev FROM Orokbefogadok";
 
     @Override
     public boolean addOrokbefogado(Orokbefogado orokbefogado) {
@@ -95,6 +95,21 @@ public class OrokbefogadoDAOImpl implements OrokbefogadoDAO {
         return false;
     }
 
+    @Override
+    public List<String> listFelhasznalonev() {
+        List<String> result = new ArrayList<>();
 
-
+        try(Connection conn = DriverManager.getConnection(CONN_STR);
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(SELECT_FELHASZNALONEV)
+        ){
+            while(rs.next()){
+                String string = rs.getString(1);
+                result.add(string);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
 }

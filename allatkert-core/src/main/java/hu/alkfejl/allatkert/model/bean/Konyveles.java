@@ -13,11 +13,11 @@ public class Konyveles implements Serializable {
     private StringProperty orokbefogadasIdeje = new SimpleStringProperty();
     private StringProperty leiras = new SimpleStringProperty();
     private StringProperty tamogatasTipusa = new SimpleStringProperty();
-    private IntegerProperty tamogatasOsszege = new SimpleIntegerProperty();
-    private IntegerProperty tamogatasMennyisege = new SimpleIntegerProperty();
+    private StringProperty tamogatasOsszege = new SimpleStringProperty();
+    private StringProperty tamogatasMennyisege = new SimpleStringProperty();
     private StringProperty gyakorisag = new SimpleStringProperty();
     private StringProperty felhasznalonev = new SimpleStringProperty();
-    private IntegerProperty azonosito = new SimpleIntegerProperty();
+    private StringProperty azonosito = new SimpleStringProperty();
 
     public Konyveles() {
     }
@@ -112,27 +112,27 @@ public class Konyveles implements Serializable {
         this.tamogatasTipusa.set(tamogatasTipusa);
     }
 
-    public int getTamogatasOsszege() {
+    public String getTamogatasOsszege() {
         return tamogatasOsszege.get();
     }
 
-    public IntegerProperty tamogatasOsszegeProperty() {
+    public StringProperty tamogatasOsszegeProperty() {
         return tamogatasOsszege;
     }
 
-    public void setTamogatasOsszege(int tamogatasOsszege) {
+    public void setTamogatasOsszege(String tamogatasOsszege) {
         this.tamogatasOsszege.set(tamogatasOsszege);
     }
 
-    public int getTamogatasMennyisege() {
+    public String getTamogatasMennyisege() {
         return tamogatasMennyisege.get();
     }
 
-    public IntegerProperty tamogatasMennyisegeProperty() {
+    public StringProperty tamogatasMennyisegeProperty() {
         return tamogatasMennyisege;
     }
 
-    public void setTamogatasMennyisege(int tamogatasMennyisege) {
+    public void setTamogatasMennyisege(String tamogatasMennyisege) {
         this.tamogatasMennyisege.set(tamogatasMennyisege);
     }
 
@@ -160,19 +160,19 @@ public class Konyveles implements Serializable {
         this.felhasznalonev.set(felhasznalonev);
     }
 
-    public int getAzonosito() {
+    public String getAzonosito() {
         return azonosito.get();
     }
 
-    public IntegerProperty azonositoProperty() {
+    public StringProperty azonositoProperty() {
         return azonosito;
     }
 
-    public void setAzonosito(int azonosito) {
+    public void setAzonosito(String azonosito) {
         this.azonosito.set(azonosito);
     }
 
-    public Konyveles(int konyvelesID, String felhasznalonev, int azonosito, String orokbefogadasIdeje, String leiras, String tamogatasTipusa, int tamogatasOsszege, int tamogatasMennyisege, String gyakorisag) {
+    public Konyveles(int konyvelesID, String felhasznalonev, String azonosito, String orokbefogadasIdeje, String leiras, String tamogatasTipusa, String tamogatasOsszege, String tamogatasMennyisege, String gyakorisag) {
         this.konyvelesID.set(konyvelesID);
         this.felhasznalonev.set(felhasznalonev);
         this.azonosito.set(azonosito);
@@ -184,7 +184,7 @@ public class Konyveles implements Serializable {
         this.gyakorisag.set(gyakorisag);
     }
 
-    public Konyveles(StringProperty felhasznalonev, IntegerProperty azonosito, IntegerProperty konyvelesID, StringProperty orokbefogadasIdeje, StringProperty leiras, StringProperty tamogatasTipusa, IntegerProperty tamogatasOsszege, IntegerProperty tamogatasMennyisege, StringProperty gyakorisag) {
+    public Konyveles(StringProperty felhasznalonev, StringProperty azonosito, IntegerProperty konyvelesID, StringProperty orokbefogadasIdeje, StringProperty leiras, StringProperty tamogatasTipusa, StringProperty tamogatasOsszege, StringProperty tamogatasMennyisege, StringProperty gyakorisag) {
         this.konyvelesID = konyvelesID;
         this.felhasznalonev = felhasznalonev;
         this.azonosito = azonosito;

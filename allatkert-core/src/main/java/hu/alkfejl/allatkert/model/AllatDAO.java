@@ -10,7 +10,7 @@ public interface AllatDAO {
     List<Allat> listAllat();
     boolean updateAllat(Allat allat);
     boolean deleteAllat(Allat allat);
-
+    List<String> listAzonosito();
 
 
 

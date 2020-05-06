@@ -10,4 +10,5 @@ public interface OrokbefogadoDAO {
     List<Orokbefogado> listOrokbefogado();
     boolean updateOrokbefogado(Orokbefogado orokbefogado);
     boolean deleteOrokbefogado(Orokbefogado orokbefogado);
+    List<String> listFelhasznalonev();
 }
