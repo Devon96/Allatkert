@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -19,6 +20,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AddKonyvelesController implements Initializable {
+
 
     private Konyveles k = new Konyveles();
 
@@ -35,9 +37,11 @@ public class AddKonyvelesController implements Initializable {
     @FXML
     public TextField mennyisegField;
     @FXML
-    public TextField gyakorisagField;
+    public ComboBox<String> gyakorisagField;
     @FXML
     public Label errorMsg;
+    @FXML
+    public Button addButton;
 
 
 
@@ -51,31 +55,33 @@ public class AddKonyvelesController implements Initializable {
         felhasznalonevField.valueProperty().bindBidirectional(k.felhasznalonevProperty());
         azonositoField.getItems().addAll(AllatController.getInstance().listAzonosito());
         azonositoField.valueProperty().bindBidirectional(k.azonositoProperty());
-
         leirasField.textProperty().bindBidirectional(k.leirasProperty());
         tipusField.getItems().addAll("pénzösszeg","állateledel");
         tipusField.valueProperty().bindBidirectional(k.tamogatasTipusaProperty());
         osszegField.textProperty().bindBidirectional(k.tamogatasOsszegeProperty());
         mennyisegField.textProperty().bindBidirectional(k.tamogatasMennyisegeProperty());
-        gyakorisagField.textProperty().bindBidirectional(k.gyakorisagProperty());
+        gyakorisagField.getItems().addAll("egyszeri","ismétlődő");
+        gyakorisagField.valueProperty().bindBidirectional(k.gyakorisagProperty());
 
 
 
-
-
-/*
-        felhasznalonevField.valueProperty().addListener((observable, oldValue, newValue) -> {
+        tipusField.valueProperty().addListener((observable, oldValue, newValue) -> {
             System.out.println(newValue);
-            if(newValue.matches("anyad")){
-               System.out.println("ANYAAAAD");
+            if(newValue.matches("pénzösszeg")){
+               osszegField.setVisible(true);
+               mennyisegField.setVisible(false);
+               mennyisegField.setText("");
+            }else{
+                osszegField.setVisible(false);
+                osszegField.setText("");
+                mennyisegField.setVisible(true);
             }
-            else{
-                errorMsg.setText("Nem megfelelő a beírt email cím formátuma");
-            }
-
         });
-*/
 
+
+        addButton.disableProperty().bind(azonositoField.valueProperty().isNull().or(felhasznalonevField.valueProperty().isNull())
+                .or(tipusField.valueProperty().isNull().or(gyakorisagField.valueProperty().isNull())));
+        addButton.disableProperty().bind(osszegField.textProperty().isEmpty().and(mennyisegField.textProperty().isEmpty()));
 
 
 

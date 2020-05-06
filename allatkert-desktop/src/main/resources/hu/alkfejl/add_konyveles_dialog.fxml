@@ -41,7 +41,7 @@
         <ComboBox  fx:id="tipusField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
         <TextField fx:id="osszegField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
         <TextField fx:id="mennyisegField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-        <TextField fx:id="gyakorisagField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+        <ComboBox fx:id="gyakorisagField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
         <Label fx:id="errorMsg" GridPane.columnIndex="1" GridPane.rowIndex="8" />
 
 

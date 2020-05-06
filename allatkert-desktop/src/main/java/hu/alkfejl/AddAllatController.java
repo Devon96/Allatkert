@@ -49,6 +49,7 @@ public class AddAllatController implements Initializable {
         birthYearSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(
                 1900, Calendar.getInstance().get(Calendar.YEAR),Calendar.getInstance().get(Calendar.YEAR)
         ));
+        birthYearSpinner.getValueFactory().valueProperty().bindBidirectional(a.szuletesiEvProperty().asObject());
 
 
 

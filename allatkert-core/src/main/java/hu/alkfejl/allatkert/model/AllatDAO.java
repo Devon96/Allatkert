@@ -11,7 +11,8 @@ public interface AllatDAO {
     boolean updateAllat(Allat allat);
     boolean deleteAllat(Allat allat);
     List<String> listAzonosito();
-
+    List<Allat> listOrokbefogadottAllat();
+    List<Allat> listOrokbefogadatlanAllat();
 
 
 

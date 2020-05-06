@@ -24,6 +24,7 @@ import java.util.ResourceBundle;
 
 public class ListAllatController implements Initializable {
 
+
     @FXML
     private TableView<Allat> table;
     @FXML
@@ -40,6 +41,10 @@ public class ListAllatController implements Initializable {
     private TableColumn<Allat, Void> torlesCol;
     @FXML
     private TableColumn<Allat, Image> photoCol;
+    @FXML
+    private Button orokbefogadottakBtn;
+    @FXML
+    private Button orokbefogadatlanokBtn;
 
     public ListAllatController(){}
 
@@ -115,6 +120,21 @@ public class ListAllatController implements Initializable {
 
 
     }
+
+    @FXML
+    public void refreshToOrokbefogadott(){
+        List<Allat> list = AllatController.getInstance().listOrokbefogadottAllat();
+        table.setItems(FXCollections.observableList(list));
+    }
+
+    @FXML
+    public void refreshToOrokbefogadatlan(){
+        List<Allat> list = AllatController.getInstance().listOrokbefogadatlanAllat();
+        table.setItems(FXCollections.observableList(list));
+    }
+
+
+
 
     private void deleteAllat(Allat allat){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Biztos vagy benne hogy ki akarod törölni ezt az azonosítójú állatot: '" + allat.getAzonosito() + "'", ButtonType.YES, ButtonType.NO);

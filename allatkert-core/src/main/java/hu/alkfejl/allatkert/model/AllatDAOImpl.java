@@ -14,6 +14,8 @@ public class AllatDAOImpl implements AllatDAO {
     private static final String INSERT_ALLAT_DEFAULT = "INSERT INTO Allatok(nev,faj,bemutatkozas,szuletesi_ev) VALUES (?,?,?,?)";
     private static final String DELETE_ALLAT = "DELETE FROM Allatok WHERE azonosito = ?";
     private static final String SELECT_AZONOSITO = "SELECT azonosito FROM Allatok";
+    private static final String SELECT_OROKBEFOGADOTT_ALLATOK = "SELECT * from Allatok,Konyveles WHERE Allatok.azonosito = Konyveles.azonosito GROUP BY Allatok.azonosito";
+    private static final String SELECT_OROKBEFOGADATLAN_ALLATOK = "SELECT * from Allatok WHERE Allatok.azonosito NOT IN (SELECT azonosito FROM Konyveles)";
 
 
     public AllatDAOImpl(){
@@ -80,7 +82,7 @@ public class AllatDAOImpl implements AllatDAO {
 
         try(Connection conn = DriverManager.getConnection(CONN_STR);
             Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery(SELECT_ALL_ALLAT);
+            ResultSet rs = st.executeQuery(SELECT_ALL_ALLAT)
         ){
             while(rs.next()){
                 Allat allat = new Allat(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6));
@@ -126,6 +128,43 @@ public class AllatDAOImpl implements AllatDAO {
             while(rs.next()){
                 String string = Integer.toString(rs.getInt(1));
                 result.add(string);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+
+    @Override
+    public List<Allat> listOrokbefogadottAllat() {
+        List<Allat> result = new ArrayList<>();
+
+        try(Connection conn = DriverManager.getConnection(CONN_STR);
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(SELECT_OROKBEFOGADOTT_ALLATOK)
+        ){
+            while(rs.next()){
+                Allat allat = new Allat(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6));
+                result.add(allat);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    @Override
+    public List<Allat> listOrokbefogadatlanAllat() {
+        List<Allat> result = new ArrayList<>();
+
+        try(Connection conn = DriverManager.getConnection(CONN_STR);
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(SELECT_OROKBEFOGADATLAN_ALLATOK)
+        ){
+            while(rs.next()){
+                Allat allat = new Allat(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6));
+                result.add(allat);
             }
         }catch (Exception e){
             e.printStackTrace();

@@ -41,6 +41,8 @@
         </columns>
       </TableView>
       <Button layoutX="30.0" layoutY="429.0" mnemonicParsing="false" onAction="#refreshTable" text="Frissítés" />
+      <Button fx:id="orokbefogadottakBtn" onAction="#refreshToOrokbefogadott" layoutX="155.0" layoutY="429.0" mnemonicParsing="false" text="Örökbefogadottak" />
+      <Button fx:id="orokbefogadatlanokBtn" onAction="#refreshToOrokbefogadatlan" layoutX="343.0" layoutY="429.0" mnemonicParsing="false" text="Örökbefogadatlanok" />
     </children>
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

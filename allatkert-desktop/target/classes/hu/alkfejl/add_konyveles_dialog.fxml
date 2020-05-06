@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -15,40 +16,42 @@
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="228.0" minWidth="10.0" prefWidth="218.0" />
     </columnConstraints>
     <rowConstraints>
+        <RowConstraints />
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints />
       <RowConstraints minHeight="10.0" prefHeight="30.0" />
     </rowConstraints>
     <children>
-        <Label text="Felhasználónév" />
-        <Label text="Azonosító" GridPane.rowIndex="1" />
-        <Label text="Leírás" GridPane.rowIndex="2" />
-        <Label text="Típus" GridPane.rowIndex="3" />
-        <Label text="Összeg" GridPane.rowIndex="4" />
-        <Label text="Mennyiség" GridPane.rowIndex="5" />
-        <Label text="Gyakoriság" GridPane.rowIndex="6" />
-        <TextField fx:id="felhasznalonevField" GridPane.columnIndex="1" />
-        <TextField fx:id="azonositoField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-        <TextField fx:id="leirasField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-        <TextField fx:id="tipusField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-        <TextField fx:id="osszegField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-        <TextField fx:id="mennyisegField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-        <TextField fx:id="gyakorisagField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-        <Label fx:id="errorMsg" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+        <Label text="Felhasználónév" GridPane.rowIndex="1" />
+        <Label text="Azonosító" GridPane.rowIndex="2" />
+        <Label text="Leírás" GridPane.rowIndex="3" />
+        <Label text="Típus" GridPane.rowIndex="4" />
+        <Label text="Összeg" GridPane.rowIndex="5" />
+        <Label text="Mennyiség" GridPane.rowIndex="6" />
+        <Label text="Gyakoriság" GridPane.rowIndex="7" />
+        <ComboBox  fx:id="felhasznalonevField" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <ComboBox  fx:id="azonositoField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <TextField fx:id="leirasField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <ComboBox  fx:id="tipusField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        <TextField fx:id="osszegField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+        <TextField fx:id="mennyisegField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+        <ComboBox fx:id="gyakorisagField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+        <Label fx:id="errorMsg" GridPane.columnIndex="1" GridPane.rowIndex="8" />
 
 
-        <Button cancelButton="true" mnemonicParsing="false" onAction="#cancel" text="Cancel" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER">
+        <Button cancelButton="true" mnemonicParsing="false" onAction="#cancel" text="Cancel" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER">
             <opaqueInsets>
                 <Insets />
             </opaqueInsets>
         </Button>
-        <Button fx:id="addButton" mnemonicParsing="false" onAction="#save" text="OK" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
+        <Button fx:id="addButton" mnemonicParsing="false" onAction="#save" text="OK" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="9" GridPane.valignment="CENTER" />
+
 
 
 
