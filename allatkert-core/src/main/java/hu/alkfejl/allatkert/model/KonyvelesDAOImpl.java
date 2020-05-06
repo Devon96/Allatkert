@@ -14,7 +14,6 @@ public class KonyvelesDAOImpl implements KonyvelesDAO {
     private static final String SELECT_ALL_KONYVELES = "SELECT id,felhasznalonev,azonosito,idopont,leiras,tipus,osszeg,mennyiseg,gyakorisag FROM Konyveles";
     private static final String INSERT_KONYVELES= "INSERT INTO Konyveles (felhasznalonev,azonosito,idopont,leiras,tipus,osszeg,mennyiseg,gyakorisag) VALUES(?,?,datetime('now'),?,?,?,?,?)";
     private static final String DELETE_KONYVELES = "DELETE FROM Konyveles WHERE id = (?)";
-    private static final String UPDATE_KONYVELES = "UPDATE Konyveles SET felhasznalonev=?, azonosito=?, idopont=?, leiras=?, tipus=?, osszeg=?, mennyiseg=?, gyakorisag=? WHERE id=?";
     private static final String LIST_OROKBEFOGADO_SZERINT = "SELECT * FROM Konyveles WHERE felhasznalonev = ?";
     private static final String LIST_OROKBEFOGADOTT_SZERINT = "SELECT * FROM Konyveles WHERE azonosito = ?";
     private static final String LIST_IDOPONT_SZERINT = "SELECT * FROM Konyveles WHERE idopont LIKE ?";
@@ -68,29 +67,6 @@ public class KonyvelesDAOImpl implements KonyvelesDAO {
         return result;
     }
 
-    @Override
-    public boolean updateKonyveles(Konyveles konyveles) {
-
-        try (Connection conn = DriverManager.getConnection(CONN_STR);
-             PreparedStatement st = conn.prepareStatement(UPDATE_KONYVELES)
-        ) {
-            st.setString(1, konyveles.getFelhasznalonev());
-            st.setString(2, konyveles.getAzonosito());
-            st.setString(3, konyveles.getOrokbefogadasIdeje());
-            st.setString(4, konyveles.getLeiras());
-            st.setString(5, konyveles.getTamogatasTipusa());
-            st.setString(6, konyveles.getTamogatasOsszege());
-            st.setString(7, konyveles.getTamogatasMennyisege());
-            st.setString(8, konyveles.getGyakorisag());
-            st.setInt(9, konyveles.getKonyvelesID());
-
-            int res = st.executeUpdate();
-            return res == 1;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
 
     @Override
     public boolean deleteKonyveles(Konyveles konyveles) {

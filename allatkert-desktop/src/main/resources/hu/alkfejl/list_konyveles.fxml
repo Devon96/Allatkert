@@ -36,7 +36,6 @@
                 <TableColumn fx:id="mennyisegCol" text="Támogatás mennyisége" />
                 <TableColumn fx:id="gyakorisagCol" text="Támogatás gyakorisága" />
                 <TableColumn fx:id="torlesCol" text="Törlés" />
-                <TableColumn fx:id="modositasCol" text="Módosítás" />
             </columns>
         </TableView>
       <Button layoutX="20.0" layoutY="325.0" mnemonicParsing="false" onAction="#refreshTable" text="Frissítés" />

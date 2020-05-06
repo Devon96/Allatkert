@@ -42,8 +42,6 @@ public class ListKonyvelesController implements Initializable {
     @FXML
     public TableColumn<Konyveles, Void> torlesCol;
     @FXML
-    public TableColumn<Konyveles, Void> modositasCol;
-    @FXML
     public ComboBox<String> orokbefogadoCBox;
     @FXML
     public ComboBox<String> orokbefogadottCBox;

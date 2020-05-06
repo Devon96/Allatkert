@@ -27,7 +27,6 @@ public class KonyvelesController {
 
     public boolean addKonyveles(Konyveles konyveles){return dao.addKonyveles(konyveles);}
     public List<Konyveles> listKonyveles(){return dao.listKonyveles();}
-    public boolean updateKonyveles(Konyveles konyveles){return dao.updateKonyveles(konyveles);}
     public boolean deleteKonyveles(Konyveles konyveles){return dao.deleteKonyveles(konyveles);}
     public List<Konyveles> listOrokbefogadoSzerint(String orokbefogado){return dao.listOrokbefogadoSzerint(orokbefogado);}
     public List<Konyveles> listOrokbefogadottSzerint(String orokbefogadott){return dao.listOrokbefogadottSzerint(orokbefogadott);}

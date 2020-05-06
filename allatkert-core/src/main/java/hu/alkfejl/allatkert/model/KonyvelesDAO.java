@@ -10,7 +10,6 @@ public interface KonyvelesDAO {
 
     boolean addKonyveles(Konyveles konyveles);
     List<Konyveles> listKonyveles();
-    boolean updateKonyveles(Konyveles konyveles);
     boolean deleteKonyveles(Konyveles konyveles);
     List<Konyveles> listOrokbefogadoSzerint(String orokbefogado);
     List<Konyveles> listOrokbefogadottSzerint(String orokbefogadott);
