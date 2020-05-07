@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.alkfejl.view.controller.ListOrokbefogadoController">
+    <children>
+        <MenuBar maxWidth="1.7976931348623157E308" prefHeight="15.0" prefWidth="600.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="Listázás">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#switchToListAllat" text="Állatok listázása" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchToListOrokbefogado" text="Örökbefogadók listázása" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchToListKonyveles" text="Könyvelések listázása" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Beszúrás">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#addAllat" text="Új állat hozzáadása" />
+                        <MenuItem mnemonicParsing="false" onAction="#addOrokbefogado" text="Új örökbefogadó hozzáadása" />
+                        <MenuItem mnemonicParsing="false" onAction="#addKonyveles" text="Új könyvelés hozzáadása" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <TableView fx:id="table" layoutY="29.0" maxWidth="1.7976931348623157E308" prefHeight="266.0" prefWidth="600.0">
+            <columns>
+                <TableColumn fx:id="felhasznalonevCol" prefWidth="94.0" text="Felhasználónév" />
+                <TableColumn fx:id="nevCol" prefWidth="56.0" text="Név" />
+                <TableColumn fx:id="telefonszamCol" prefWidth="75.0" text="Telefonszám" />
+                <TableColumn fx:id="emailCol" prefWidth="84.0" text="Email" />
+                <TableColumn fx:id="idopontCol" prefWidth="125.0" text="Felvétel időpontja" />
+                <TableColumn fx:id="torlesCol" prefWidth="125.0" text="Törlés" />
+                <TableColumn fx:id="modositasCol" prefWidth="125.0" text="Módosítás" />
+            </columns>
+        </TableView>
+      <Button layoutX="28.0" layoutY="318.0" mnemonicParsing="false" onAction="#refreshTable" text="Frissítés" />
+
+    </children>
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+</AnchorPane>

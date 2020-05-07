@@ -24,13 +24,13 @@ public class App extends Application {
         stage.show();
     }
 
-    static void setRoot(String fxml) throws IOException {
+    public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
 
 
 
-    static void setDialog(String fxml) throws IOException {
+    public static void setDialog(String fxml) throws IOException {
 
             Parent root = loadFXML(fxml);
             Stage stage = new Stage();
@@ -41,8 +41,8 @@ public class App extends Application {
 
     }
 
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+    public static Parent loadFXML(String fxml) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/hu/alkfejl/view/" +fxml + ".fxml"));
         return fxmlLoader.load();
     }
 

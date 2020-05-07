@@ -5,6 +5,6 @@ module hu.alkfejl {
     requires org.apache.commons.io;
     requires java.desktop;
 
-    opens hu.alkfejl to javafx.fxml;
+    opens hu.alkfejl.view.controller to javafx.fxml;
     exports hu.alkfejl;
 }

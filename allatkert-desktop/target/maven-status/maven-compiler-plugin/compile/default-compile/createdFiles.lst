@@ -1,12 +1,2 @@
 hu/alkfejl/App.class
-hu/alkfejl/AddOrokbefogadoController.class
-hu/alkfejl/ListOrokbefogadoController.class
-hu/alkfejl/ListAllatController.class
-hu/alkfejl/PrimaryController.class
-hu/alkfejl/ListAllatController$2.class
 module-info.class
-hu/alkfejl/AddAllatController.class
-hu/alkfejl/ListKonyvelesController$1.class
-hu/alkfejl/ListKonyvelesController.class
-hu/alkfejl/ListAllatController$1.class
-hu/alkfejl/UpdateOrokbefogadoController.class
