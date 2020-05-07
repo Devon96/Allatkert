@@ -11,4 +11,5 @@ public interface OrokbefogadoDAO {
     boolean updateOrokbefogado(Orokbefogado orokbefogado);
     boolean deleteOrokbefogado(Orokbefogado orokbefogado);
     List<String> listFelhasznalonev();
+    Orokbefogado login (String username, String password);
 }

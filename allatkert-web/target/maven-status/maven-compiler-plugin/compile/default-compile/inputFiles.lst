@@ -1,1 +1,5 @@
+/home/ntlndj93/IdeaProjects/Allatkert/allatkert-web/src/main/java/hu/alkfejl/controller/LogoutController.java
 /home/ntlndj93/IdeaProjects/Allatkert/allatkert-web/src/main/java/ListAllatServlet.java
+/home/ntlndj93/IdeaProjects/Allatkert/allatkert-web/src/main/java/hu/alkfejl/controller/LoginController.java
+/home/ntlndj93/IdeaProjects/Allatkert/allatkert-web/src/main/java/hu/alkfejl/filters/AuthFilter.java
+/home/ntlndj93/IdeaProjects/Allatkert/allatkert-web/src/main/java/module-info.java

@@ -1,5 +1,6 @@
 package hu.alkfejl.allatkert.model;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import hu.alkfejl.allatkert.config.DBConfig;
 import hu.alkfejl.allatkert.model.bean.Allat;
 import hu.alkfejl.allatkert.model.bean.Orokbefogado;
@@ -16,6 +17,7 @@ public class OrokbefogadoDAOImpl implements OrokbefogadoDAO {
     private static final String DELETE_OROKBEFOGADO = "DELETE FROM Orokbefogadok WHERE felhasznalonev = (?)";
     private static final String UPDATE_OROKBEFOGADO = "UPDATE Orokbefogadok SET jelszo=?, nev=?, telefon=?, email=? WHERE felhasznalonev=?";
     private static final String SELECT_FELHASZNALONEV = "SELECT felhasznalonev FROM Orokbefogadok";
+    private static final String LOGIN_OROKBEFOGADO = "SELECT * FROM Orokbefogadok WHERE felhasznalonev = ?";
 
     @Override
     public boolean addOrokbefogado(Orokbefogado orokbefogado) {
@@ -23,6 +25,10 @@ public class OrokbefogadoDAOImpl implements OrokbefogadoDAO {
         try (Connection conn = DriverManager.getConnection(DBConfig.DB_CONN_STR);
              PreparedStatement st = conn.prepareStatement(INSERT_OROKBEFOGADO)
         ) {
+            String newPwd = BCrypt.withDefaults().hashToString(12, orokbefogado.getJelszo().toCharArray());
+            orokbefogado.setJelszo(newPwd);
+
+
             st.setString(1, orokbefogado.getFelhasznalonev());
             st.setString(2, orokbefogado.getJelszo());
             st.setString(3, orokbefogado.getNev());
@@ -112,4 +118,39 @@ public class OrokbefogadoDAOImpl implements OrokbefogadoDAO {
         }
         return result;
     }
+
+
+    @Override
+    public Orokbefogado login(String username, String password) {
+
+        try (Connection conn = DriverManager.getConnection(DBConfig.DB_CONN_STR);
+             PreparedStatement pst = conn.prepareStatement(LOGIN_OROKBEFOGADO)
+        ) {
+            pst.setString(1, username);
+
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                String dbPass = rs.getString(2);
+
+                BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), dbPass);
+                if(result.verified){
+                    Orokbefogado orokbefogado = new Orokbefogado();
+                    orokbefogado.setFelhasznalonev(rs.getString(1));
+                    orokbefogado.setJelszo(rs.getString(2));
+                    orokbefogado.setNev(rs.getString(3));
+                    orokbefogado.setTelefonszam(rs.getString(4));
+                    orokbefogado.setEmail(rs.getString(5));
+                    orokbefogado.setFelvetelIdeje(rs.getString(6));
+
+                    return orokbefogado;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    
+
 }
