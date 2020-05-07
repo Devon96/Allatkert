@@ -1,5 +1,6 @@
 package hu.alkfejl.allatkert.model;
 
+import hu.alkfejl.allatkert.config.DBConfig;
 import hu.alkfejl.allatkert.model.bean.Allat;
 import hu.alkfejl.allatkert.model.bean.Konyveles;
 import hu.alkfejl.allatkert.model.bean.Orokbefogado;
@@ -10,7 +11,6 @@ import java.util.List;
 
 public class KonyvelesDAOImpl implements KonyvelesDAO {
 
-    private static final String CONN_STR = "jdbc:sqlite:/opt/tomcat/bin/allatkert.db";
     private static final String SELECT_ALL_KONYVELES = "SELECT id,felhasznalonev,azonosito,idopont,leiras,tipus,osszeg,mennyiseg,gyakorisag FROM Konyveles";
     private static final String INSERT_KONYVELES= "INSERT INTO Konyveles (felhasznalonev,azonosito,idopont,leiras,tipus,osszeg,mennyiseg,gyakorisag) VALUES(?,?,datetime('now'),?,?,?,?,?)";
     private static final String DELETE_KONYVELES = "DELETE FROM Konyveles WHERE id = (?)";
@@ -26,7 +26,7 @@ public class KonyvelesDAOImpl implements KonyvelesDAO {
     @Override
     public boolean addKonyveles(Konyveles konyveles) {
 
-        try (Connection conn = DriverManager.getConnection(CONN_STR);
+        try (Connection conn = DriverManager.getConnection(DBConfig.DB_CONN_STR);
              PreparedStatement st = conn.prepareStatement(INSERT_KONYVELES)
         ) {
             st.setString(1, konyveles.getFelhasznalonev());
@@ -52,7 +52,7 @@ public class KonyvelesDAOImpl implements KonyvelesDAO {
 
         List<Konyveles> result = new ArrayList<>();
 
-        try(Connection conn = DriverManager.getConnection(CONN_STR);
+        try(Connection conn = DriverManager.getConnection(DBConfig.DB_CONN_STR);
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(SELECT_ALL_KONYVELES)
         ){
@@ -71,7 +71,7 @@ public class KonyvelesDAOImpl implements KonyvelesDAO {
     @Override
     public boolean deleteKonyveles(Konyveles konyveles) {
 
-        try (Connection conn = DriverManager.getConnection(CONN_STR);
+        try (Connection conn = DriverManager.getConnection(DBConfig.DB_CONN_STR);
              PreparedStatement st = conn.prepareStatement(DELETE_KONYVELES)
         ) {
             st.setInt(1,konyveles.getKonyvelesID());
@@ -90,7 +90,7 @@ public class KonyvelesDAOImpl implements KonyvelesDAO {
     public List<Konyveles> listOrokbefogadoSzerint(String orokbefogado) {
         List<Konyveles> result = new ArrayList<>();
 
-        try(Connection conn = DriverManager.getConnection(CONN_STR);
+        try(Connection conn = DriverManager.getConnection(DBConfig.DB_CONN_STR);
             PreparedStatement st = conn.prepareStatement(LIST_OROKBEFOGADO_SZERINT)
         ){
             st.setString(1,orokbefogado);
@@ -110,7 +110,7 @@ public class KonyvelesDAOImpl implements KonyvelesDAO {
     public List<Konyveles> listOrokbefogadottSzerint(String orokbefogadott) {
         List<Konyveles> result = new ArrayList<>();
 
-        try(Connection conn = DriverManager.getConnection(CONN_STR);
+        try(Connection conn = DriverManager.getConnection(DBConfig.DB_CONN_STR);
             PreparedStatement st = conn.prepareStatement(LIST_OROKBEFOGADOTT_SZERINT)
         ){
             st.setInt(1,Integer.parseInt(orokbefogadott));
@@ -130,7 +130,7 @@ public class KonyvelesDAOImpl implements KonyvelesDAO {
     public List<Konyveles> listIdopontSzerint(String idopont) {
         List<Konyveles> result = new ArrayList<>();
 
-        try(Connection conn = DriverManager.getConnection(CONN_STR);
+        try(Connection conn = DriverManager.getConnection(DBConfig.DB_CONN_STR);
             PreparedStatement st = conn.prepareStatement(LIST_IDOPONT_SZERINT)
         ){
             st.setString(1,idopont+"%");
@@ -150,7 +150,7 @@ public class KonyvelesDAOImpl implements KonyvelesDAO {
     public List<Konyveles> listTipusSzerint(String tipus) {
         List<Konyveles> result = new ArrayList<>();
 
-        try(Connection conn = DriverManager.getConnection(CONN_STR);
+        try(Connection conn = DriverManager.getConnection(DBConfig.DB_CONN_STR);
             PreparedStatement st = conn.prepareStatement(LIST_TIPUS_SZERINT)
         ){
             st.setString(1,tipus);
@@ -171,7 +171,7 @@ public class KonyvelesDAOImpl implements KonyvelesDAO {
     public List<String> listOrokbefogadok() {
         List<String> result = new ArrayList<>();
 
-        try(Connection conn = DriverManager.getConnection(CONN_STR);
+        try(Connection conn = DriverManager.getConnection(DBConfig.DB_CONN_STR);
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(LIST_OROKBEFOGADOK)
         ){
@@ -189,7 +189,7 @@ public class KonyvelesDAOImpl implements KonyvelesDAO {
     public List<String> listOrokbefogadottak() {
         List<String> result = new ArrayList<>();
 
-        try(Connection conn = DriverManager.getConnection(CONN_STR);
+        try(Connection conn = DriverManager.getConnection(DBConfig.DB_CONN_STR);
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(LIST_OROKBEFOGADOTTAK)
         ){
@@ -207,7 +207,7 @@ public class KonyvelesDAOImpl implements KonyvelesDAO {
     public List<String> listTamogatasTipusok() {
         List<String> result = new ArrayList<>();
 
-        try(Connection conn = DriverManager.getConnection(CONN_STR);
+        try(Connection conn = DriverManager.getConnection(DBConfig.DB_CONN_STR);
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(LIST_TAMOGATASTIPUSOK)
         ){

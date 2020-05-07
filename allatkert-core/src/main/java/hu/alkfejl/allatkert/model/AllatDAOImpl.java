@@ -1,5 +1,6 @@
 package hu.alkfejl.allatkert.model;
 
+import hu.alkfejl.allatkert.config.DBConfig;
 import hu.alkfejl.allatkert.model.bean.Allat;
 
 import java.sql.*;
@@ -8,7 +9,6 @@ import java.util.List;
 
 public class AllatDAOImpl implements AllatDAO {
 
-    private static final String CONN_STR = "jdbc:sqlite:/opt/tomcat/bin/allatkert.db";
     private static final String SELECT_ALL_ALLAT = "SELECT * FROM Allatok";
     private static final String INSERT_ALLAT = "INSERT INTO Allatok(nev,faj,fenykep,bemutatkozas,szuletesi_ev) VALUES (?,?,?,?,?)";
     private static final String INSERT_ALLAT_DEFAULT = "INSERT INTO Allatok(nev,faj,bemutatkozas,szuletesi_ev) VALUES (?,?,?,?)";
@@ -31,7 +31,7 @@ public class AllatDAOImpl implements AllatDAO {
     public boolean addAllat(Allat allat) {
 
         if(allat.getKep() != null && !(allat.getKep().isEmpty())){
-            try (Connection conn = DriverManager.getConnection(CONN_STR);
+            try (Connection conn = DriverManager.getConnection(DBConfig.DB_CONN_STR);
                  PreparedStatement st = conn.prepareStatement(INSERT_ALLAT)
             ) {
                 st.setString(1, allat.getNev());
@@ -48,7 +48,7 @@ public class AllatDAOImpl implements AllatDAO {
                 e.printStackTrace();
             }
         }else{
-            try (Connection conn = DriverManager.getConnection(CONN_STR);
+            try (Connection conn = DriverManager.getConnection(DBConfig.DB_CONN_STR);
                  PreparedStatement st = conn.prepareStatement(INSERT_ALLAT_DEFAULT)
             ) {
                 st.setString(1, allat.getNev());
@@ -72,7 +72,7 @@ public class AllatDAOImpl implements AllatDAO {
 
         List<Allat> result = new ArrayList<>();
 
-        try(Connection conn = DriverManager.getConnection(CONN_STR);
+        try(Connection conn = DriverManager.getConnection(DBConfig.DB_CONN_STR);
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(SELECT_ALL_ALLAT)
         ){
@@ -94,7 +94,7 @@ public class AllatDAOImpl implements AllatDAO {
     @Override
     public boolean deleteAllat(Allat allat) {
 
-        try (Connection conn = DriverManager.getConnection(CONN_STR);
+        try (Connection conn = DriverManager.getConnection(DBConfig.DB_CONN_STR);
              PreparedStatement st = conn.prepareStatement(DELETE_ALLAT)
         ) {
             st.setInt(1,allat.getAzonosito());
@@ -113,7 +113,7 @@ public class AllatDAOImpl implements AllatDAO {
     public List<String> listAzonosito() {
         List<String> result = new ArrayList<>();
 
-        try(Connection conn = DriverManager.getConnection(CONN_STR);
+        try(Connection conn = DriverManager.getConnection(DBConfig.DB_CONN_STR);
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(SELECT_AZONOSITO)
         ){
@@ -132,7 +132,7 @@ public class AllatDAOImpl implements AllatDAO {
     public List<Allat> listOrokbefogadottAllat() {
         List<Allat> result = new ArrayList<>();
 
-        try(Connection conn = DriverManager.getConnection(CONN_STR);
+        try(Connection conn = DriverManager.getConnection(DBConfig.DB_CONN_STR);
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(SELECT_OROKBEFOGADOTT_ALLATOK)
         ){
@@ -150,7 +150,7 @@ public class AllatDAOImpl implements AllatDAO {
     public List<Allat> listOrokbefogadatlanAllat() {
         List<Allat> result = new ArrayList<>();
 
-        try(Connection conn = DriverManager.getConnection(CONN_STR);
+        try(Connection conn = DriverManager.getConnection(DBConfig.DB_CONN_STR);
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(SELECT_OROKBEFOGADATLAN_ALLATOK)
         ){

@@ -1,5 +1,6 @@
 package hu.alkfejl.allatkert.model;
 
+import hu.alkfejl.allatkert.config.DBConfig;
 import hu.alkfejl.allatkert.model.bean.Allat;
 import hu.alkfejl.allatkert.model.bean.Orokbefogado;
 
@@ -10,7 +11,6 @@ import java.util.concurrent.TimeUnit;
 
 public class OrokbefogadoDAOImpl implements OrokbefogadoDAO {
 
-    private static final String CONN_STR = "jdbc:sqlite:/opt/tomcat/bin/allatkert.db";
     private static final String SELECT_ALL_OROKBEFOGADO = "SELECT felhasznalonev, nev, telefon, email, felvetel_ideje FROM Orokbefogadok";
     private static final String INSERT_OROKBEFOGADO = "INSERT INTO Orokbefogadok VALUES(?,?,?,?,?,datetime('now'))";
     private static final String DELETE_OROKBEFOGADO = "DELETE FROM Orokbefogadok WHERE felhasznalonev = (?)";
@@ -20,7 +20,7 @@ public class OrokbefogadoDAOImpl implements OrokbefogadoDAO {
     @Override
     public boolean addOrokbefogado(Orokbefogado orokbefogado) {
 
-        try (Connection conn = DriverManager.getConnection(CONN_STR);
+        try (Connection conn = DriverManager.getConnection(DBConfig.DB_CONN_STR);
              PreparedStatement st = conn.prepareStatement(INSERT_OROKBEFOGADO)
         ) {
             st.setString(1, orokbefogado.getFelhasznalonev());
@@ -44,7 +44,7 @@ public class OrokbefogadoDAOImpl implements OrokbefogadoDAO {
 
         List<Orokbefogado> result = new ArrayList<>();
 
-        try(Connection conn = DriverManager.getConnection(CONN_STR);
+        try(Connection conn = DriverManager.getConnection(DBConfig.DB_CONN_STR);
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(SELECT_ALL_OROKBEFOGADO)
         ){
@@ -61,7 +61,7 @@ public class OrokbefogadoDAOImpl implements OrokbefogadoDAO {
     @Override
     public boolean updateOrokbefogado(Orokbefogado orokbefogado) {
 
-        try (Connection conn = DriverManager.getConnection(CONN_STR);
+        try (Connection conn = DriverManager.getConnection(DBConfig.DB_CONN_STR);
              PreparedStatement st = conn.prepareStatement(UPDATE_OROKBEFOGADO)
         ) {
             st.setString(1, orokbefogado.getJelszo());
@@ -81,7 +81,7 @@ public class OrokbefogadoDAOImpl implements OrokbefogadoDAO {
     @Override
     public boolean deleteOrokbefogado(Orokbefogado orokbefogado) {
 
-        try (Connection conn = DriverManager.getConnection(CONN_STR);
+        try (Connection conn = DriverManager.getConnection(DBConfig.DB_CONN_STR);
              PreparedStatement st = conn.prepareStatement(DELETE_OROKBEFOGADO)
         ) {
             st.setString(1,orokbefogado.getFelhasznalonev());
@@ -99,7 +99,7 @@ public class OrokbefogadoDAOImpl implements OrokbefogadoDAO {
     public List<String> listFelhasznalonev() {
         List<String> result = new ArrayList<>();
 
-        try(Connection conn = DriverManager.getConnection(CONN_STR);
+        try(Connection conn = DriverManager.getConnection(DBConfig.DB_CONN_STR);
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(SELECT_FELHASZNALONEV)
         ){
