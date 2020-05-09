@@ -19,6 +19,16 @@ public class OrokbefogadoDAOImpl implements OrokbefogadoDAO {
     private static final String SELECT_FELHASZNALONEV = "SELECT felhasznalonev FROM Orokbefogadok";
     private static final String LOGIN_OROKBEFOGADO = "SELECT * FROM Orokbefogadok WHERE felhasznalonev = ?";
 
+    public OrokbefogadoDAOImpl(){
+        try {
+            Class.forName("org.sqlite.JDBC");
+        } catch (ClassNotFoundException e) {
+            System.err.println("Nem sikerult betolteni a JDBC drivert");
+            e.printStackTrace();
+        }
+    }
+
+
     @Override
     public boolean addOrokbefogado(Orokbefogado orokbefogado) {
 

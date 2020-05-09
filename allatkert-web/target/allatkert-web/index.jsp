@@ -2,6 +2,6 @@
          pageEncoding="UTF-8"%>
 
 <%
-    String redirectURL = "${pageContext.request.contextPath}/pages/login.jsp";
+    String redirectURL = "/pages/login.jsp";
     response.sendRedirect(redirectURL);
 %>

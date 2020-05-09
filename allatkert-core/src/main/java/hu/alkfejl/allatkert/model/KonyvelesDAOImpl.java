@@ -23,6 +23,16 @@ public class KonyvelesDAOImpl implements KonyvelesDAO {
     private static final String LIST_TAMOGATASTIPUSOK = "SELECT DISTINCT tipus FROM Konyveles";
 
 
+    public KonyvelesDAOImpl(){
+        try {
+            Class.forName("org.sqlite.JDBC");
+        } catch (ClassNotFoundException e) {
+            System.err.println("Nem sikerult betolteni a JDBC drivert");
+            e.printStackTrace();
+        }
+    }
+
+
     @Override
     public boolean addKonyveles(Konyveles konyveles) {
 

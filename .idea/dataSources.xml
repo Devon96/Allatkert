@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="allatkert.db" uuid="8fceaa4f-e1b9-4681-b0c8-6e5379e37871">
+    <data-source source="LOCAL" name="allatkert.db" uuid="8c9033b8-edc4-4dcd-825d-d1fa4ac24f92">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
