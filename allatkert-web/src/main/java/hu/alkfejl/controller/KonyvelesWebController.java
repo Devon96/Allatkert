@@ -75,5 +75,10 @@ public class KonyvelesWebController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         req.setAttribute("konyvelesList", konyvelesController.listKonyveles());
+        //lenyíló listák feltöltése
+        req.setAttribute("orokbefogadoFelhasznalonevekList",konyvelesController.listOrokbefogadok());
+        req.setAttribute("orokbefogadottAzonositokList",konyvelesController.listOrokbefogadottak());
+        req.setAttribute("tamogatasTipusaList",konyvelesController.listTamogatasTipusok());
+
     }
 }

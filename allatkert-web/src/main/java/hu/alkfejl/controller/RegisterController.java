@@ -26,10 +26,7 @@ public class RegisterController extends HttpServlet {
         orokbefogado.setNev(req.getParameter("nev"));
         orokbefogado.setTelefonszam(req.getParameter("telefon"));
         orokbefogado.setEmail(req.getParameter("email"));
-
-        System.out.println(orokbefogado.getFelhasznalonev() + " " + orokbefogado.getJelszo() + " " + orokbefogado.getNev()
-                + " " + orokbefogado.getTelefonszam() + " " + orokbefogado.getEmail());
-
+        
         orokbefogadoController.addOrokbefogado(orokbefogado);
 
         resp.sendRedirect("pages/login.jsp");

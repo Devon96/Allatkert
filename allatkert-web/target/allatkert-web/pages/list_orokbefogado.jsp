@@ -24,12 +24,6 @@
         </thead>
         <tbody>
 
-
-
-
-
-
-
         <c:forEach var="item" items="${requestScope.orokbefogadoList}">
             <tr>
                 <td>${item.felhasznalonev}</td>
@@ -49,6 +43,7 @@
     </table>
 
 </div>
+
 
 </body>
 </html>

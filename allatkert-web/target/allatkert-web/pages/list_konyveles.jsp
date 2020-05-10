@@ -56,6 +56,59 @@
     </table>
 
 </div>
+<div>
+    <form action="" method="post">
+        <label>Szűrés örökbefogadó alapján</label>
+        <label>
+            <select name="konyvelesOrokbefogadoFelhasznalonev">
+                <c:forEach items="${requestScope.orokbefogadoFelhasznalonevekList}" var="orokbefogadoFelhasznalonev">
+                    <option value="${orokbefogadoFelhasznalonev}">${orokbefogadoFelhasznalonev}</option>
+                </c:forEach>
+            </select>
+        </label>
+        <input type="submit" value="Küldés" />
+    </form>
+</div>
+<div>
+    <form action="" method="post">
+        <label>Szűrés örökbefogadott alapján</label>
+        <label>
+            <select name="konyvelesOrokbefogadottAzonosito">
+                <c:forEach items="${requestScope.orokbefogadottAzonositokList}" var="orokbefogadottAzonosito">
+                    <option value="${orokbefogadottAzonosito}">${orokbefogadottAzonosito}</option>
+                </c:forEach>
+            </select>
+        </label>
+        <input type="submit" value="Küldés" />
+    </form>
+</div>
+<div>
+    <form action="" method="post">
+        <label>Szűrés időpont alapján</label>
+        <label>
+            <input type="number">
+        </label>
+        <input type="submit" value="Küldés" />
+    </form>
+</div>
+<div>
+    <form action="" method="post">
+        <label>Szűrés támogatás típusa alapján</label>
+        <label>
+            <select name="konyvelesTamogatasTipusa">
+                <c:forEach items="${requestScope.tamogatasTipusaList}" var="tamogatasTipusa">
+                    <option value="${tamogatasTipusa}">${tamogatasTipusa}</option>
+                </c:forEach>
+            </select>
+        </label>
+        <input type="submit" value="Küldés" />
+    </form>
+</div>
+
+
+
+
+
 
 
 </body>
