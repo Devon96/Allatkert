@@ -9,17 +9,17 @@
 <div class="container">
     <form action="${pageContext.request.contextPath}/LoginController" method="post">
         <div class="form-group">
-            <label for="username">Username</label>
+            <label for="username">Felhasználónév</label>
             <input required name="username" type="text" class="form-control" id="username"
                    placeholder="Username"/>
         </div>
         <div class="form-group">
-            <label for="password">Password</label>
+            <label for="password">Jelszó</label>
             <input required name="password" type="password" class="form-control" id="password"
                    placeholder="Password"/>
         </div>
-        <button id="submit" type="submit" class="btn btn-primary">Login</button>
-        <span><a href="register.jsp">Register</a></span>
+        <button id="submit" type="submit" class="btn btn-primary">Bejelentkezés</button>
+        <span><a href="register.jsp">Regisztráció</a></span>
     </form>
 </div>
 </body>

@@ -38,7 +38,7 @@ public class LoginController extends HttpServlet {
             return;
         }
         request.getSession().setAttribute("currentUser", orokbefogado);
-        response.sendRedirect("pages/list_person.jsp");
+        response.sendRedirect("pages/list_konyveles.jsp");
     }
 
 }
