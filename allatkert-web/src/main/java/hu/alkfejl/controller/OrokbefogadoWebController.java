@@ -22,6 +22,7 @@ public class OrokbefogadoWebController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
+        resp.setCharacterEncoding("UTF-8");
 
 
 
@@ -31,6 +32,7 @@ public class OrokbefogadoWebController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
+        resp.setCharacterEncoding("UTF-8");
 
         req.setAttribute("orokbefogadoList", orokbefogadoController.listOrokbefogado());
 

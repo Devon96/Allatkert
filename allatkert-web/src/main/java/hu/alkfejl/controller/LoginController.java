@@ -23,22 +23,23 @@ public class LoginController extends HttpServlet {
         super();
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setCharacterEncoding("utf-8");
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
+        resp.setCharacterEncoding("UTF-8");
 
         OrokbefogadoController orokbefogadoController = OrokbefogadoController.getInstance();
 
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        String username = req.getParameter("username");
+        String password = req.getParameter("password");
 
         Orokbefogado orokbefogado = orokbefogadoController.login(username, password);
 
         if (orokbefogado == null) {
-            response.sendRedirect("pages/login.jsp");
+            resp.sendRedirect("pages/login.jsp");
             return;
         }
-        request.getSession().setAttribute("currentUser", orokbefogado);
-        response.sendRedirect("pages/list_konyveles.jsp");
+        req.getSession().setAttribute("currentUser", orokbefogado);
+        resp.sendRedirect("pages/list_konyveles.jsp");
     }
 
 }

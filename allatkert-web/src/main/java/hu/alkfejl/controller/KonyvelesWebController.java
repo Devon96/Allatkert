@@ -5,6 +5,7 @@ import hu.alkfejl.allatkert.controller.KonyvelesController;
 import hu.alkfejl.allatkert.model.bean.Konyveles;
 import hu.alkfejl.allatkert.model.bean.Orokbefogado;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,59 +23,68 @@ public class KonyvelesWebController extends HttpServlet {
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-
         req.setCharacterEncoding("UTF-8");
-        /*
-        if(request.getParameter("id") != null && !request.getParameter("id").equals("0") ){
-            doPut(request, response);
-            return;
+        resp.setCharacterEncoding("UTF-8");
+
+
+        String felhasznalonev = req.getParameter("konyvelesOrokbefogadoFelhasznalonev");
+        String azonosito = req.getParameter("konyvelesOrokbefogadottAzonosito");
+        String idopont = req.getParameter("konyvelesIdopont");
+        String tipus = req.getParameter("konyvelesTamogatasTipusa");
+
+        if(felhasznalonev != null && !felhasznalonev.equals("")){
+            req.setAttribute("kivalasztottFelhasznalonev",felhasznalonev);
+            doGet(req, resp);
         }
-
-         */
-
-        resp.setCharacterEncoding("UTF-8");
-        resp.setCharacterEncoding("UTF-8");
-        Konyveles k = new Konyveles();
-/*
-        Person p = new Person();
-        User user = (User) request.getSession().getAttribute("currentUser");
-
-
-        try {
-            k.setKonyvelesID(Integer.parseInt(req.getParameter("id")));
-            k.setFelhasznalonev(req.getParameter("felhasznalonev"));
-            k.setAzonosito(req.getParameter("azonosito"));
-            k.setOrokbefogadasIdeje(req.getParameter("idopont"));
-            k.setLeiras(req.getParameter("leiras"));
-            k.setTamogatasTipusa(req.getParameter("tipus"));
-            k.setTamogatasOsszege(req.getParameter("osszeg"));
-            k.setTamogatasMennyisege(req.getParameter("mennyiseg"));
-            k.setGyakorisag(req.getParameter("gyakorisag"));
-
-
-            if(dao.addSzemely(p, user)) {
-                response.sendRedirect("pages/list_person.jsp");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        if(azonosito != null && !azonosito.equals("")){
+            req.setAttribute("kivalasztottAzonosito",azonosito);
+            doGet(req, resp);
+        }
+        if(idopont != null && !idopont.equals("")){
+            req.setAttribute("kivalasztottIdopont",idopont);
+            doGet(req, resp);
+        }
+        if(tipus != null && !tipus.equals("")){
+            req.setAttribute("kivalasztottTipus",tipus);
+            doGet(req, resp);
         }
 
 
 
 
- */
+
+
+
+
+
 
     }
+
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
-        req.setAttribute("konyvelesList", konyvelesController.listKonyveles());
+        resp.setCharacterEncoding("UTF-8");
+        //teljes lista
+        if(req.getParameter("konyvelesOrokbefogadoFelhasznalonev") != null){
+            req.setAttribute("konyvelesList", konyvelesController.listOrokbefogadoSzerint(req.getParameter("konyvelesOrokbefogadoFelhasznalonev")));
+        }else if(req.getParameter("konyvelesOrokbefogadottAzonosito") != null){
+            req.setAttribute("konyvelesList", konyvelesController.listOrokbefogadottSzerint(req.getParameter("konyvelesOrokbefogadottAzonosito")));
+        }else if(req.getParameter("konyvelesIdopont") != null){
+            req.setAttribute("konyvelesList", konyvelesController.listIdopontSzerint(req.getParameter("konyvelesIdopont")));
+        }else if(req.getParameter("konyvelesTamogatasTipusa") != null){
+            req.setAttribute("konyvelesList", konyvelesController.listTipusSzerint(req.getParameter("konyvelesTamogatasTipusa")));
+        }else{
+            req.setAttribute("konyvelesList", konyvelesController.listKonyveles());
+        }
+
+
         //lenyíló listák feltöltése
         req.setAttribute("orokbefogadoFelhasznalonevekList",konyvelesController.listOrokbefogadok());
         req.setAttribute("orokbefogadottAzonositokList",konyvelesController.listOrokbefogadottak());

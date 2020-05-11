@@ -26,13 +26,6 @@
         </tr>
         </thead>
         <tbody>
-
-
-
-
-
-
-
         <c:forEach var="item" items="${requestScope.konyvelesList}">
             <tr>
                 <td>${item.konyvelesID}</td>
@@ -86,7 +79,7 @@
     <form action="" method="post">
         <label>Szűrés időpont alapján</label>
         <label>
-            <input type="number">
+            <input type="number" name="konyvelesIdopont">
         </label>
         <input type="submit" value="Küldés" />
     </form>

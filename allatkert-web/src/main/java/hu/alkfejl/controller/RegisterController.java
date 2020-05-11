@@ -17,7 +17,8 @@ public class RegisterController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setCharacterEncoding("utf-8");
+        req.setCharacterEncoding("UTF-8");
+        resp.setCharacterEncoding("UTF-8");
 
         Orokbefogado orokbefogado = new Orokbefogado();
 
@@ -26,7 +27,7 @@ public class RegisterController extends HttpServlet {
         orokbefogado.setNev(req.getParameter("nev"));
         orokbefogado.setTelefonszam(req.getParameter("telefon"));
         orokbefogado.setEmail(req.getParameter("email"));
-        
+
         orokbefogadoController.addOrokbefogado(orokbefogado);
 
         resp.sendRedirect("pages/login.jsp");
