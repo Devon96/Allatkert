@@ -8,6 +8,7 @@
 /home/ntlndj93/IdeaProjects/Allatkert/allatkert-core/src/main/java/hu/alkfejl/allatkert/controller/OrokbefogadoController.java
 /home/ntlndj93/IdeaProjects/Allatkert/allatkert-core/src/main/java/hu/alkfejl/allatkert/model/OrokbefogadoDAO.java
 /home/ntlndj93/IdeaProjects/Allatkert/allatkert-core/src/main/java/hu/alkfejl/allatkert/model/OrokbefogadoDAOImpl.java
+/home/ntlndj93/IdeaProjects/Allatkert/allatkert-core/src/main/java/hu/alkfejl/allatkert/utils/Utils.java
 /home/ntlndj93/IdeaProjects/Allatkert/allatkert-core/src/main/java/hu/alkfejl/allatkert/model/AllatDAO.java
 /home/ntlndj93/IdeaProjects/Allatkert/allatkert-core/src/main/java/hu/alkfejl/allatkert/controller/AllatController.java
 /home/ntlndj93/IdeaProjects/Allatkert/allatkert-core/src/main/java/hu/alkfejl/allatkert/config/DBConfig.java

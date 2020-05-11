@@ -2,10 +2,7 @@ package hu.alkfejl.allatkert.controller;
 
 import hu.alkfejl.allatkert.model.KonyvelesDAO;
 import hu.alkfejl.allatkert.model.KonyvelesDAOImpl;
-import hu.alkfejl.allatkert.model.OrokbefogadoDAO;
-import hu.alkfejl.allatkert.model.OrokbefogadoDAOImpl;
 import hu.alkfejl.allatkert.model.bean.Konyveles;
-import hu.alkfejl.allatkert.model.bean.Orokbefogado;
 
 import java.util.List;
 

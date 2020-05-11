@@ -1,10 +1,7 @@
 package hu.alkfejl.allatkert.controller;
 
-import hu.alkfejl.allatkert.model.AllatDAO;
-import hu.alkfejl.allatkert.model.AllatDAOImpl;
 import hu.alkfejl.allatkert.model.OrokbefogadoDAO;
 import hu.alkfejl.allatkert.model.OrokbefogadoDAOImpl;
-import hu.alkfejl.allatkert.model.bean.Allat;
 import hu.alkfejl.allatkert.model.bean.Orokbefogado;
 
 import java.util.List;

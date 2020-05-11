@@ -1,9 +1,7 @@
 package hu.alkfejl.view.controller;
 
 import hu.alkfejl.App;
-import hu.alkfejl.allatkert.controller.AllatController;
 import hu.alkfejl.allatkert.controller.OrokbefogadoController;
-import hu.alkfejl.allatkert.model.bean.Allat;
 import hu.alkfejl.allatkert.model.bean.Orokbefogado;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;

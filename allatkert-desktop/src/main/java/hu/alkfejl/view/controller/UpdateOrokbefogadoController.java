@@ -1,6 +1,5 @@
 package hu.alkfejl.view.controller;
 
-import hu.alkfejl.allatkert.controller.AllatController;
 import hu.alkfejl.allatkert.controller.OrokbefogadoController;
 import hu.alkfejl.allatkert.model.bean.Orokbefogado;
 import javafx.event.ActionEvent;

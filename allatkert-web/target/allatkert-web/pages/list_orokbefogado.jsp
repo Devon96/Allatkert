@@ -31,12 +31,6 @@
                 <td>${item.telefonszam}</td>
                 <td>${item.email}</td>
                 <td>${item.felvetelIdeje}</td>
-                <!--
-                 <td>
-                     <a href="../UpdatePerson?personId="><i class="fas fa-edit"></i></a>
-                     <a href="../DeletePerson?personId="><i class="fas fa-trash"></i></a>
-                 </td>
-                 -->
             </tr>
         </c:forEach>
         </tbody>

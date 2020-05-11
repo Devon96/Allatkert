@@ -1,17 +1,14 @@
 package hu.alkfejl.controller;
 
 import hu.alkfejl.allatkert.controller.OrokbefogadoController;
-import hu.alkfejl.allatkert.model.OrokbefogadoDAO;
-import hu.alkfejl.allatkert.model.OrokbefogadoDAOImpl;
 import hu.alkfejl.allatkert.model.bean.Orokbefogado;
 
-import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 
 @WebServlet("/LoginController")

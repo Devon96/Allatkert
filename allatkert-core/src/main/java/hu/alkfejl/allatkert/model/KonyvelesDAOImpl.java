@@ -1,9 +1,7 @@
 package hu.alkfejl.allatkert.model;
 
 import hu.alkfejl.allatkert.config.DBConfig;
-import hu.alkfejl.allatkert.model.bean.Allat;
 import hu.alkfejl.allatkert.model.bean.Konyveles;
-import hu.alkfejl.allatkert.model.bean.Orokbefogado;
 
 import java.sql.*;
 import java.util.ArrayList;

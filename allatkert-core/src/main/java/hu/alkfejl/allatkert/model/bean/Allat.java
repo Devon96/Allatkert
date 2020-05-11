@@ -1,22 +1,9 @@
 package hu.alkfejl.allatkert.model.bean;
 
-import hu.alkfejl.allatkert.utils.Utils;
 import javafx.beans.property.*;
-
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.Serializable;
-import java.sql.Blob;
-import java.util.Base64;
-
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.image.PixelWriter;
-import javafx.scene.image.WritableImage;
 
-import javax.imageio.ImageIO;
+import java.io.Serializable;
 
 public class Allat implements Serializable {
 

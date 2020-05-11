@@ -11,4 +11,5 @@ hu/alkfejl/allatkert/model/bean/Orokbefogado.class
 hu/alkfejl/allatkert/controller/KonyvelesController.class
 module-info.class
 hu/alkfejl/allatkert/config/DBConfig.class
+hu/alkfejl/allatkert/utils/Utils.class
 hu/alkfejl/allatkert/model/OrokbefogadoDAO.class

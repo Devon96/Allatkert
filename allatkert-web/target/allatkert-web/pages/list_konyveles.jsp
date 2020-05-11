@@ -37,12 +37,6 @@
                 <td>${item.tamogatasOsszege}</td>
                 <td>${item.tamogatasMennyisege}</td>
                 <td>${item.gyakorisag}</td>
-               <!--
-                <td>
-                    <a href="../UpdatePerson?personId="><i class="fas fa-edit"></i></a>
-                    <a href="../DeletePerson?personId="><i class="fas fa-trash"></i></a>
-                </td>
-                -->
             </tr>
         </c:forEach>
         </tbody>
@@ -54,6 +48,7 @@
         <label>Szűrés örökbefogadó alapján</label>
         <label>
             <select name="konyvelesOrokbefogadoFelhasznalonev">
+                    <option value="frissites">Tábla frissítése</option>
                 <c:forEach items="${requestScope.orokbefogadoFelhasznalonevekList}" var="orokbefogadoFelhasznalonev">
                     <option value="${orokbefogadoFelhasznalonev}">${orokbefogadoFelhasznalonev}</option>
                 </c:forEach>
@@ -67,6 +62,7 @@
         <label>Szűrés örökbefogadott alapján</label>
         <label>
             <select name="konyvelesOrokbefogadottAzonosito">
+                    <option value="frissites">Tábla frissítése</option>
                 <c:forEach items="${requestScope.orokbefogadottAzonositokList}" var="orokbefogadottAzonosito">
                     <option value="${orokbefogadottAzonosito}">${orokbefogadottAzonosito}</option>
                 </c:forEach>
@@ -79,7 +75,7 @@
     <form action="" method="post">
         <label>Szűrés időpont alapján</label>
         <label>
-            <input type="number" name="konyvelesIdopont">
+            <input type="number" maxlength="4" name="konyvelesIdopont">
         </label>
         <input type="submit" value="Küldés" />
     </form>
@@ -89,6 +85,7 @@
         <label>Szűrés támogatás típusa alapján</label>
         <label>
             <select name="konyvelesTamogatasTipusa">
+                    <option value="frissites">Tábla frissítése</option>
                 <c:forEach items="${requestScope.tamogatasTipusaList}" var="tamogatasTipusa">
                     <option value="${tamogatasTipusa}">${tamogatasTipusa}</option>
                 </c:forEach>

@@ -8,8 +8,6 @@ public class Konyveles implements Serializable {
 
     private static final LongProperty serialVersionUID = new SimpleLongProperty(-7140401042409163579L);
     private IntegerProperty konyvelesID = new SimpleIntegerProperty();
-    // private ObjectProperty<Allat> orokbefogadott = new SimpleObjectProperty<>();
-   // private ObjectProperty<Orokbefogado> orokbefogado = new SimpleObjectProperty<>();
     private StringProperty orokbefogadasIdeje = new SimpleStringProperty();
     private StringProperty leiras = new SimpleStringProperty();
     private StringProperty tamogatasTipusa = new SimpleStringProperty();
@@ -50,32 +48,6 @@ public class Konyveles implements Serializable {
         this.konyvelesID.set(konyvelesID);
     }
 
-    /*
-        public Allat getOrokbefogadott() {
-            return orokbefogadott.get();
-        }
-
-        public ObjectProperty<Allat> orokbefogadottProperty() {
-            return orokbefogadott;
-        }
-
-        public void setOrokbefogadott(Allat orokbefogadott) {
-            this.orokbefogadott.set(orokbefogadott);
-        }
-    */
-/*
-    public Orokbefogado getOrokbefogado() {
-        return orokbefogado.get();
-    }
-
-    public ObjectProperty<Orokbefogado> orokbefogadoProperty() {
-        return orokbefogado;
-    }
-
-    public void setOrokbefogado(Orokbefogado orokbefogado) {
-        this.orokbefogado.set(orokbefogado);
-    }
-*/
     public String getOrokbefogadasIdeje() {
         return orokbefogadasIdeje.get();
     }
@@ -184,16 +156,4 @@ public class Konyveles implements Serializable {
         this.gyakorisag.set(gyakorisag);
     }
 
-    public Konyveles(StringProperty felhasznalonev, StringProperty azonosito, IntegerProperty konyvelesID, StringProperty orokbefogadasIdeje, StringProperty leiras, StringProperty tamogatasTipusa, StringProperty tamogatasOsszege, StringProperty tamogatasMennyisege, StringProperty gyakorisag) {
-        this.konyvelesID = konyvelesID;
-        this.felhasznalonev = felhasznalonev;
-        this.azonosito = azonosito;
-        this.orokbefogadasIdeje = orokbefogadasIdeje;
-        this.leiras = leiras;
-        this.tamogatasTipusa = tamogatasTipusa;
-        this.tamogatasOsszege = tamogatasOsszege;
-        this.tamogatasMennyisege = tamogatasMennyisege;
-        this.gyakorisag = gyakorisag;
-
-    }
 }

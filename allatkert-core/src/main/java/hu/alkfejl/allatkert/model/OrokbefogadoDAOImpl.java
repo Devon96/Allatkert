@@ -2,13 +2,11 @@ package hu.alkfejl.allatkert.model;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import hu.alkfejl.allatkert.config.DBConfig;
-import hu.alkfejl.allatkert.model.bean.Allat;
 import hu.alkfejl.allatkert.model.bean.Orokbefogado;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class OrokbefogadoDAOImpl implements OrokbefogadoDAO {
 

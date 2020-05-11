@@ -52,10 +52,5 @@
         <input type="submit" value="Küldés" />
     </form>
 </div>
-
-
-
-
-
 </body>
 </html>

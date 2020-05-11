@@ -27,8 +27,8 @@ public class AllatController {
     public boolean updateAllat(Allat allat){return dao.updateAllat(allat);}
     public boolean deleteAllat(Allat allat){return dao.deleteAllat(allat);}
     public List<String> listAzonosito(){return dao.listAzonosito();}
-    public List<Allat> listOrokbefogadottAllat(){return dao.listOrokbefogadottAllat();};
-    public List<Allat> listOrokbefogadatlanAllat(){return dao.listOrokbefogadatlanAllat();};
+    public List<Allat> listOrokbefogadottAllat(){return dao.listOrokbefogadottAllat();}
+    public List<Allat> listOrokbefogadatlanAllat(){return dao.listOrokbefogadatlanAllat();}
     public List<Allat> OrokbefogadhatoAllatok(){return dao.OrokbefogadhatoAllatok();}
 
 

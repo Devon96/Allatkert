@@ -1,9 +1,7 @@
 package hu.alkfejl.controller;
 
-import hu.alkfejl.allatkert.controller.KonyvelesController;
 import hu.alkfejl.allatkert.controller.OrokbefogadoController;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

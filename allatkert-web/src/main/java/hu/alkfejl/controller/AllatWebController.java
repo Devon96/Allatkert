@@ -1,7 +1,6 @@
 package hu.alkfejl.controller;
 
 import hu.alkfejl.allatkert.controller.AllatController;
-import hu.alkfejl.allatkert.controller.KonyvelesController;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

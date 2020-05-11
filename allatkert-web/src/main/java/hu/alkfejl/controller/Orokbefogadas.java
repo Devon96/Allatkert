@@ -1,7 +1,6 @@
 package hu.alkfejl.controller;
 
 import hu.alkfejl.allatkert.controller.KonyvelesController;
-import hu.alkfejl.allatkert.model.KonyvelesDAOImpl;
 import hu.alkfejl.allatkert.model.bean.Konyveles;
 
 import javax.servlet.ServletException;

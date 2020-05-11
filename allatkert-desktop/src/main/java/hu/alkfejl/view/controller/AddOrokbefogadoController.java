@@ -1,6 +1,5 @@
 package hu.alkfejl.view.controller;
 
-import hu.alkfejl.allatkert.controller.AllatController;
 import hu.alkfejl.allatkert.controller.OrokbefogadoController;
 import hu.alkfejl.allatkert.model.bean.Orokbefogado;
 import javafx.event.ActionEvent;
@@ -70,7 +69,7 @@ public class AddOrokbefogadoController implements Initializable {
 
     @FXML
     private void save(ActionEvent event) {
-        boolean result = false;
+        boolean result;
         result = OrokbefogadoController.getInstance().addOrokbefogado(orokbefogado);
         if (result) {
             ((Node) event.getSource()).getScene().getWindow().hide();

@@ -4,8 +4,6 @@ import hu.alkfejl.allatkert.controller.AllatController;
 import hu.alkfejl.allatkert.controller.KonyvelesController;
 import hu.alkfejl.allatkert.controller.OrokbefogadoController;
 import hu.alkfejl.allatkert.model.bean.Konyveles;
-import hu.alkfejl.allatkert.model.bean.Orokbefogado;
-import javafx.beans.property.IntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -99,7 +97,7 @@ public class AddKonyvelesController implements Initializable {
 
     @FXML
     private void save(ActionEvent event) {
-        boolean result = false;
+        boolean result;
         result = KonyvelesController.getInstance().addKonyveles(k);
         if (result) {
             ((Node) event.getSource()).getScene().getWindow().hide();
