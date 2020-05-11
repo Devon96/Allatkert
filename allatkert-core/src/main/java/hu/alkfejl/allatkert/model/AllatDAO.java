@@ -13,6 +13,7 @@ public interface AllatDAO {
     List<String> listAzonosito();
     List<Allat> listOrokbefogadottAllat();
     List<Allat> listOrokbefogadatlanAllat();
+    List<Allat> OrokbefogadhatoAllatok();
 
 
 

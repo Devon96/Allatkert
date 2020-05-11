@@ -130,6 +130,7 @@ public class Orokbefogado implements Serializable {
 
     public void copyTo(Orokbefogado target){
         target.setFelhasznalonev(this.getFelhasznalonev());
+        target.setJelszo(this.getJelszo());
         target.setNev(this.getNev());
         target.setTelefonszam(this.getTelefonszam());
         target.setEmail(this.getEmail());

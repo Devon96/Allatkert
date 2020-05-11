@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav w-100">
             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/pages/list_allat.jsp">Állatok listázása</a></li>
-            <li class="nav-item"><a class="nav-link" href="">Állat örökbefogadása</a></li>
+            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/pages/orokbefogadas.jsp">Állat örökbefogadása</a></li>
             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/pages/list_orokbefogado.jsp">Örökbefogadók listázása</a></li>
             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/pages/list_konyveles.jsp">Könyvelések listázása</a></li>
 <!--

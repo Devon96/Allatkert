@@ -8,4 +8,5 @@ module allatkert.core {
     exports hu.alkfejl.allatkert.controller;
     exports hu.alkfejl.allatkert.model.bean;
     exports hu.alkfejl.allatkert.model;
+    exports hu.alkfejl.allatkert.utils;
 }

@@ -24,8 +24,8 @@
         <Label text="Név" GridPane.rowIndex="2" />
         <Label text="Telefonszám" GridPane.rowIndex="3" />
         <Label text="Email" GridPane.rowIndex="4" />
-        <TextField fx:id="felhasznalonevField" layoutX="134.0" layoutY="95.0" visible="false" GridPane.columnIndex="1" />
-        <PasswordField fx:id="jelszoField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <TextField visible="false" fx:id="felhasznalonevField" layoutX="134.0" layoutY="95.0" GridPane.columnIndex="1" />
+        <PasswordField visible="false" fx:id="jelszoField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
         <TextField fx:id="nevField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
         <TextField fx:id="telefonszamField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
         <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="4" />

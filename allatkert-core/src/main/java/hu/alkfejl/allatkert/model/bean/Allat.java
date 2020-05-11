@@ -1,5 +1,6 @@
 package hu.alkfejl.allatkert.model.bean;
 
+import hu.alkfejl.allatkert.utils.Utils;
 import javafx.beans.property.*;
 
 import java.awt.image.BufferedImage;
@@ -168,38 +169,9 @@ public class Allat implements Serializable {
         this.szuletesiEv.set(szuletesiEv);
 
 
-            System.out.println("A kod ->>>>>>>>>>>>>> " + kep);
-            byte[] decodedBytes = Base64
-                    .getDecoder()
-                    .decode(kep);
-            ByteArrayInputStream bais = new ByteArrayInputStream(decodedBytes);
-            BufferedImage image = null;
-            Image img = null;
-            try {
-                image = ImageIO.read(bais);
-                img = convertToFxImage(image);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        this.photo.set(img);
     }
 
 
-
-    private static Image convertToFxImage(BufferedImage image) {
-        WritableImage wr = null;
-        if (image != null) {
-            wr = new WritableImage(image.getWidth(), image.getHeight());
-            PixelWriter pw = wr.getPixelWriter();
-            for (int x = 0; x < image.getWidth(); x++) {
-                for (int y = 0; y < image.getHeight(); y++) {
-                    pw.setArgb(x, y, image.getRGB(x, y));
-                }
-            }
-        }
-        return new ImageView(wr).getImage();
-    }
 
 
 

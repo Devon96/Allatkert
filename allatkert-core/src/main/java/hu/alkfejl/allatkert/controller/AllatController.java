@@ -29,7 +29,7 @@ public class AllatController {
     public List<String> listAzonosito(){return dao.listAzonosito();}
     public List<Allat> listOrokbefogadottAllat(){return dao.listOrokbefogadottAllat();};
     public List<Allat> listOrokbefogadatlanAllat(){return dao.listOrokbefogadatlanAllat();};
-
+    public List<Allat> OrokbefogadhatoAllatok(){return dao.OrokbefogadhatoAllatok();}
 
 
 

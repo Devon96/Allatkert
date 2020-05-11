@@ -44,6 +44,7 @@
                 <TableColumn fx:id="idopontCol" prefWidth="125.0" text="Felvétel időpontja" />
                 <TableColumn fx:id="torlesCol" prefWidth="125.0" text="Törlés" />
                 <TableColumn fx:id="modositasCol" prefWidth="125.0" text="Módosítás" />
+                <TableColumn visible="false" fx:id="jelszoCol" prefWidth="125.0" text="Jelszó" />
             </columns>
         </TableView>
       <Button layoutX="28.0" layoutY="318.0" mnemonicParsing="false" onAction="#refreshTable" text="Frissítés" />

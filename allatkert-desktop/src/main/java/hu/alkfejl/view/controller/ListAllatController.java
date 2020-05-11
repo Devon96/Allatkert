@@ -3,6 +3,8 @@ package hu.alkfejl.view.controller;
 import hu.alkfejl.App;
 import hu.alkfejl.allatkert.controller.AllatController;
 import hu.alkfejl.allatkert.model.bean.Allat;
+import hu.alkfejl.allatkert.model.bean.Orokbefogado;
+import hu.alkfejl.allatkert.utils.Utils;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,6 +13,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
+import javafx.scene.image.PixelWriter;
+import javafx.scene.image.WritableImage;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -19,6 +23,7 @@ import javax.imageio.ImageIO;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.Buffer;
 import java.util.Base64;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -41,11 +46,9 @@ public class ListAllatController implements Initializable {
     @FXML
     private TableColumn<Allat, Void> torlesCol;
     @FXML
+    private TableColumn<Allat, String> kepCol;
+    @FXML
     private TableColumn<Allat, Image> photoCol;
-    @FXML
-    private Button orokbefogadottakBtn;
-    @FXML
-    private Button orokbefogadatlanokBtn;
 
     public ListAllatController(){}
 
@@ -65,7 +68,7 @@ public class ListAllatController implements Initializable {
         fajCol.setCellValueFactory(new PropertyValueFactory<>("faj"));
         bemutatkozasCol.setCellValueFactory(new PropertyValueFactory<>("bemutatkozas"));
         szuletesCol.setCellValueFactory(new PropertyValueFactory<>("szuletesiEv"));
-        photoCol.setCellValueFactory(new PropertyValueFactory<>("photo"));
+        kepCol.setCellValueFactory(new PropertyValueFactory<>("kep"));
 
         torlesCol.setCellFactory(param -> {
             return new TableCell<>(){
@@ -90,37 +93,105 @@ public class ListAllatController implements Initializable {
         });
 
 
+
+
+
+/*
+        modositasCol.setCellFactory(param -> {
+            return new TableCell<>(){
+                private final Button editBtn = new Button("Szerkesztés");
+                @Override
+                protected void updateItem(Void item, boolean empty){
+                    super.updateItem(item, empty);
+                    if(empty){
+                        setGraphic(null);
+                    }else{
+                        setGraphic(editBtn);
+                    }
+                }
+            };
+        });
+
+*/
+
+
+
+
+
+
+/*
         photoCol.setCellFactory(param -> {
 
             ImageView imageView = new ImageView();
             imageView.setFitHeight(100);
             imageView.setFitWidth(100);
-
             TableCell<Allat, Image> cell = new TableCell<>(){
+
                 @Override
                 public void updateItem(Image item, boolean empty){
                     super.updateItem(item, empty);
 
+                    String s = getTableView().getItems().get(getIndex()).getKep();
                     if(item != null){
-                        imageView.setImage(item);
+                        Image kep = StringbolFxImage(s);
+                        imageView.setImage(kep);
+                        cell.setGraphic(imageView);
+                    }else{
+                        cell.setGraphic(null);
                     }
                 }
             };
-            cell.setGraphic(imageView);
             return cell;
         });
 
 
-
-
-
-
-
-
+*/
 
 
 
     }
+
+
+    public Image StringbolFxImage(String p_string){
+        System.out.println("A kod ->>>>>>>>>>>>>> " + p_string);
+        byte[] decodedBytes = Base64
+                .getDecoder()
+                .decode(p_string);
+        ByteArrayInputStream bais = new ByteArrayInputStream(decodedBytes);
+        BufferedImage image = null;
+        Image img = null;
+        try {
+            image = ImageIO.read(bais);
+            img = convertToFxImage(image);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return img;
+    }
+
+    //bufferedimagebol fxmlimage keszitese
+    public Image convertToFxImage(BufferedImage image) {
+        WritableImage wr = null;
+        if (image != null) {
+            wr = new WritableImage(image.getWidth(), image.getHeight());
+            PixelWriter pw = wr.getPixelWriter();
+            for (int x = 0; x < image.getWidth(); x++) {
+                for (int y = 0; y < image.getHeight(); y++) {
+                    pw.setArgb(x, y, image.getRGB(x, y));
+                }
+            }
+        }
+        return new ImageView(wr).getImage();
+    }
+
+
+
+
+
+
+
+
 
     @FXML
     public void refreshToOrokbefogadott(){

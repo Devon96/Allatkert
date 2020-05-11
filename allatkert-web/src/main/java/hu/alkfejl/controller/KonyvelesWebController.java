@@ -20,11 +20,7 @@ public class KonyvelesWebController extends HttpServlet {
     private KonyvelesController konyvelesController = KonyvelesController.getInstance();
 
 
-    @Override
-    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-
-    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -71,15 +67,28 @@ public class KonyvelesWebController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
-        //teljes lista
+
+
         if(req.getParameter("konyvelesOrokbefogadoFelhasznalonev") != null){
-            req.setAttribute("konyvelesList", konyvelesController.listOrokbefogadoSzerint(req.getParameter("konyvelesOrokbefogadoFelhasznalonev")));
+            if(req.getParameter("konyvelesOrokbefogadoFelhasznalonev").equals("frissites")){
+                req.setAttribute("konyvelesList", konyvelesController.listKonyveles());
+            }else{
+                req.setAttribute("konyvelesList", konyvelesController.listOrokbefogadoSzerint(req.getParameter("konyvelesOrokbefogadoFelhasznalonev")));
+            }
         }else if(req.getParameter("konyvelesOrokbefogadottAzonosito") != null){
-            req.setAttribute("konyvelesList", konyvelesController.listOrokbefogadottSzerint(req.getParameter("konyvelesOrokbefogadottAzonosito")));
+            if(req.getParameter("konyvelesOrokbefogadottAzonosito").equals("frissites")){
+                req.setAttribute("konyvelesList", konyvelesController.listKonyveles());
+            }else{
+                req.setAttribute("konyvelesList", konyvelesController.listOrokbefogadottSzerint(req.getParameter("konyvelesOrokbefogadottAzonosito")));
+            }
         }else if(req.getParameter("konyvelesIdopont") != null){
             req.setAttribute("konyvelesList", konyvelesController.listIdopontSzerint(req.getParameter("konyvelesIdopont")));
         }else if(req.getParameter("konyvelesTamogatasTipusa") != null){
-            req.setAttribute("konyvelesList", konyvelesController.listTipusSzerint(req.getParameter("konyvelesTamogatasTipusa")));
+            if(req.getParameter("konyvelesTamogatasTipusa").equals("frissites")){
+                req.setAttribute("konyvelesList", konyvelesController.listKonyveles());
+            }else{
+                req.setAttribute("konyvelesList", konyvelesController.listTipusSzerint(req.getParameter("konyvelesTamogatasTipusa")));
+            }
         }else{
             req.setAttribute("konyvelesList", konyvelesController.listKonyveles());
         }

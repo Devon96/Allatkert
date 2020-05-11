@@ -41,6 +41,8 @@ public class ListOrokbefogadoController implements Initializable {
     public TableColumn<Orokbefogado, Void> torlesCol;
     @FXML
     public TableColumn<Orokbefogado, Void> modositasCol;
+    @FXML
+    public TableColumn<Orokbefogado, String> jelszoCol;
 
 
 
@@ -65,6 +67,7 @@ public class ListOrokbefogadoController implements Initializable {
         emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
         idopontCol.setCellValueFactory(new PropertyValueFactory<>("felvetelIdeje"));
 
+        jelszoCol.setCellValueFactory(new PropertyValueFactory<>("jelszo"));
         torlesCol.setCellFactory(param -> {
             return new TableCell<>(){
                 private final Button deleteBtn = new Button("Törlés");
@@ -134,7 +137,7 @@ public class ListOrokbefogadoController implements Initializable {
     private void editOrokbefogado(Orokbefogado obf) {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/hu/alkfejl/update_orokbefogado_dialog.fxml"));
+            loader.setLocation(getClass().getResource("/hu/alkfejl/view/update_orokbefogado_dialog.fxml"));
             Parent root = loader.load();
             UpdateOrokbefogadoController controller = loader.getController();
             controller.initOrokbefogado(obf);

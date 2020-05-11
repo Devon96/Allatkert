@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 public class OrokbefogadoDAOImpl implements OrokbefogadoDAO {
 
-    private static final String SELECT_ALL_OROKBEFOGADO = "SELECT felhasznalonev, nev, telefon, email, felvetel_ideje FROM Orokbefogadok";
+    private static final String SELECT_ALL_OROKBEFOGADO = "SELECT felhasznalonev, jelszo, nev, telefon, email, felvetel_ideje FROM Orokbefogadok";
     private static final String INSERT_OROKBEFOGADO = "INSERT INTO Orokbefogadok VALUES(?,?,?,?,?,datetime('now'))";
     private static final String DELETE_OROKBEFOGADO = "DELETE FROM Orokbefogadok WHERE felhasznalonev = (?)";
     private static final String UPDATE_OROKBEFOGADO = "UPDATE Orokbefogadok SET jelszo=?, nev=?, telefon=?, email=? WHERE felhasznalonev=?";
@@ -65,7 +65,7 @@ public class OrokbefogadoDAOImpl implements OrokbefogadoDAO {
             ResultSet rs = st.executeQuery(SELECT_ALL_OROKBEFOGADO)
         ){
             while(rs.next()){
-                Orokbefogado orokbefogado = new Orokbefogado(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5));
+                Orokbefogado orokbefogado = new Orokbefogado(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6));
                 result.add(orokbefogado);
             }
         }catch (Exception e){

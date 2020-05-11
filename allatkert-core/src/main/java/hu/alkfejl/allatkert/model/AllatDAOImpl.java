@@ -16,7 +16,7 @@ public class AllatDAOImpl implements AllatDAO {
     private static final String SELECT_AZONOSITO = "SELECT azonosito FROM Allatok";
     private static final String SELECT_OROKBEFOGADOTT_ALLATOK = "SELECT * from Allatok,Konyveles WHERE Allatok.azonosito = Konyveles.azonosito GROUP BY Allatok.azonosito";
     private static final String SELECT_OROKBEFOGADATLAN_ALLATOK = "SELECT * from Allatok WHERE Allatok.azonosito NOT IN (SELECT azonosito FROM Konyveles)";
-
+    private static final String SELECT_OROKBEFOGADHATO_ALLATOK = "SELECT DISTINCT Allatok.azonosito, Allatok.nev,Allatok.faj, Allatok.fenykep, Allatok.bemutatkozas, Allatok.szuletesi_ev FROM Allatok,Konyveles WHERE Allatok.azonosito = Konyveles.azonosito AND szuletesi_ev > 2018 OR Allatok.azonosito NOT IN (SELECT DISTINCT Konyveles.azonosito FROM Konyveles)";
 
     public AllatDAOImpl(){
         try {
@@ -153,6 +153,25 @@ public class AllatDAOImpl implements AllatDAO {
         try(Connection conn = DriverManager.getConnection(DBConfig.DB_CONN_STR);
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(SELECT_OROKBEFOGADATLAN_ALLATOK)
+        ){
+            while(rs.next()){
+                Allat allat = new Allat(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6));
+                result.add(allat);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+
+    @Override
+    public List<Allat> OrokbefogadhatoAllatok() {
+        List<Allat> result = new ArrayList<>();
+
+        try(Connection conn = DriverManager.getConnection(DBConfig.DB_CONN_STR);
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(SELECT_OROKBEFOGADHATO_ALLATOK)
         ){
             while(rs.next()){
                 Allat allat = new Allat(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6));
