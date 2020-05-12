@@ -31,7 +31,7 @@ A projecten belül 3 modul található: allatkert-core, allatkert-desktop és al
      - email formátum
      - a támogatás típusától függően jelenik meg az összeg és a mennyiség mező
      - kötelezően kitöltendő mezők
-   - képek base64 kódolása, base64 kód táblázatban történő képpé alakítása
+   - képek base64 kódolása, base64 kód táblázatban történő képpé alakítása (JPG és PNG formátum)
 3. Allatkert-web:
    - örökbefogadó bejelentkezés/regisztráció
    - állatok listázása, örökbefogadottság alapján való szűrés
