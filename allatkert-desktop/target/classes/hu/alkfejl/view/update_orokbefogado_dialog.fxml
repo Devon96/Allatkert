@@ -20,7 +20,6 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <Label text="Jelszó" GridPane.rowIndex="1" />
         <Label text="Név" GridPane.rowIndex="2" />
         <Label text="Telefonszám" GridPane.rowIndex="3" />
         <Label text="Email" GridPane.rowIndex="4" />

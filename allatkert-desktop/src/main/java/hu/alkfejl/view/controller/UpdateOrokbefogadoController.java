@@ -63,10 +63,11 @@ public class UpdateOrokbefogadoController implements Initializable {
         });
 
         addButton.disableProperty().bind(
-                felhasznalonevField.textProperty().isNull().or(felhasznalonevField.textProperty().isEmpty()).or(
-                        (emailField.textProperty().isEmpty().or(emailField.textProperty().isNull())).and
-                                (telefonszamField.textProperty().isNull().or(telefonszamField.textProperty().isEmpty()))
-                ).or(jelszoField.textProperty().isNull().or(jelszoField.textProperty().isEmpty()))
+                (nevField.textProperty().isNull().or(nevField.textProperty().isEmpty()))
+                        .or(
+                                (emailField.textProperty().isEmpty().or(emailField.textProperty().isNull())).and
+                                        (telefonszamField.textProperty().isNull().or(telefonszamField.textProperty().isEmpty()))
+                        ).or(jelszoField.textProperty().isNull().or(jelszoField.textProperty().isEmpty()))
         );
 
 
