@@ -5,13 +5,19 @@ import hu.alkfejl.allatkert.controller.AllatController;
 import hu.alkfejl.allatkert.model.bean.Allat;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -28,21 +34,21 @@ public class ListAllatController implements Initializable {
     @FXML
     private TableView<Allat> table;
     @FXML
-    private TableColumn<Allat, Integer> azonositoCol;
+    private TableColumn<Allat, String> azonositoCol;
     @FXML
     private TableColumn<Allat, String> nevCol;
     @FXML
     private TableColumn<Allat, String> fajCol;
     @FXML
+    private TableColumn<Allat, String> kepCol;
+    @FXML
     private TableColumn<Allat, String> bemutatkozasCol;
     @FXML
-    private TableColumn<Allat, Integer> szuletesCol;
+    private TableColumn<Allat, String> szuletesCol;
     @FXML
     private TableColumn<Allat, Void> torlesCol;
     @FXML
-    private TableColumn<Allat, String> kepCol;
-    @FXML
-    private TableColumn<Allat, Image> photoCol;
+    public TableColumn<Allat, Void> modositasCol;
 
     public ListAllatController(){}
 
@@ -64,6 +70,14 @@ public class ListAllatController implements Initializable {
         szuletesCol.setCellValueFactory(new PropertyValueFactory<>("szuletesiEv"));
         kepCol.setCellValueFactory(new PropertyValueFactory<>("kep"));
 
+        kepCol.setCellFactory(new Callback<TableColumn<Allat, String>, TableCell<Allat, String>>() {
+            @Override
+            public TableCell<Allat, String> call(TableColumn<Allat, String> param) {
+                return new KepCell<>();
+            }
+        });
+
+
         torlesCol.setCellFactory(param -> {
             return new TableCell<>(){
                 private final Button deleteBtn = new Button("Törlés");
@@ -71,7 +85,7 @@ public class ListAllatController implements Initializable {
                     deleteBtn.setOnAction(event -> {
                         Allat a = getTableView().getItems().get(getIndex());
                         deleteAllat(a);
-                       // refreshTable();
+                        refreshTable();
                     });
                 }
                 @Override
@@ -88,12 +102,16 @@ public class ListAllatController implements Initializable {
 
 
 
-
-
-/*
         modositasCol.setCellFactory(param -> {
             return new TableCell<>(){
                 private final Button editBtn = new Button("Szerkesztés");
+                {
+                    editBtn.setOnAction(event -> {
+                        Allat a = getTableView().getItems().get(getIndex());
+                        editAllat(a);
+                        refreshTable();
+                    });
+                }
                 @Override
                 protected void updateItem(Void item, boolean empty){
                     super.updateItem(item, empty);
@@ -106,48 +124,20 @@ public class ListAllatController implements Initializable {
             };
         });
 
-*/
 
 
 
 
 
 
-/*
-        photoCol.setCellFactory(param -> {
-
-            ImageView imageView = new ImageView();
-            imageView.setFitHeight(100);
-            imageView.setFitWidth(100);
-            TableCell<Allat, Image> cell = new TableCell<>(){
-
-                @Override
-                public void updateItem(Image item, boolean empty){
-                    super.updateItem(item, empty);
-
-                    String s = getTableView().getItems().get(getIndex()).getKep();
-                    if(item != null){
-                        Image kep = StringbolFxImage(s);
-                        imageView.setImage(kep);
-                        cell.setGraphic(imageView);
-                    }else{
-                        cell.setGraphic(null);
-                    }
-                }
-            };
-            return cell;
-        });
-
-
-*/
 
 
 
     }
 
 
+
     public Image StringbolFxImage(String p_string){
-        System.out.println("A kod ->>>>>>>>>>>>>> " + p_string);
         byte[] decodedBytes = Base64
                 .getDecoder()
                 .decode(p_string);
@@ -181,7 +171,29 @@ public class ListAllatController implements Initializable {
 
 
 
+    class KepCell<T> extends TableCell<T,String>{
+        private final ImageView image;
 
+        public KepCell(){
+            image = new ImageView();
+            image.setFitWidth(100);
+            image.setFitHeight(100);
+            image.setPreserveRatio(true);
+            setGraphic(image);
+            setMinHeight(70);
+        }
+
+        @Override
+        protected void updateItem(String item, boolean empty) {
+            super.updateItem(item, empty);
+
+            if(empty || item == null){
+                image.setImage(null);
+            }else{
+                image.setImage(StringbolFxImage(itemProperty().getValue()));
+            }
+        }
+    }
 
 
 
@@ -209,6 +221,28 @@ public class ListAllatController implements Initializable {
                 AllatController.getInstance().deleteAllat(allat);
             }
         });
+    }
+
+
+    private void editAllat(Allat allat) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/hu/alkfejl/view/update_allat_dialog.fxml"));
+            Parent root = loader.load();
+            UpdateAllatController controller = loader.getController();
+
+            controller.initAllat(allat);
+
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 

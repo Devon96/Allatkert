@@ -1,1 +1,10 @@
+hu/alkfejl/filters/AuthFilter.class
+hu/alkfejl/controller/OrokbefogadoWebController.class
+hu/alkfejl/controller/Orokbefogadas.class
 module-info.class
+hu/alkfejl/controller/OrokbefogadasWebController.class
+hu/alkfejl/controller/LogoutController.class
+hu/alkfejl/controller/RegisterController.class
+hu/alkfejl/controller/AllatWebController.class
+hu/alkfejl/controller/LoginController.class
+hu/alkfejl/controller/KonyvelesWebController.class

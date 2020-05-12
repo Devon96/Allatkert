@@ -1,34 +1,20 @@
 package hu.alkfejl.allatkert.model.bean;
 
 import javafx.beans.property.*;
-import javafx.scene.image.Image;
 
 import java.io.Serializable;
 
 public class Allat implements Serializable {
 
     private static final LongProperty serialVersionUID = new SimpleLongProperty(9131632767569531030L);
-    private IntegerProperty azonosito = new SimpleIntegerProperty();
+    private StringProperty azonosito = new SimpleStringProperty();
     private StringProperty nev = new SimpleStringProperty();
     private StringProperty faj = new SimpleStringProperty();
     private StringProperty kep = new SimpleStringProperty();
     private StringProperty bemutatkozas = new SimpleStringProperty();
-    private IntegerProperty szuletesiEv = new SimpleIntegerProperty();
-    private ObjectProperty<Image> photo = new SimpleObjectProperty<>();
+    private StringProperty szuletesiEv = new SimpleStringProperty();
 
 
-
-    public Image getPhoto() {
-        return photo.get();
-    }
-
-    public ObjectProperty<Image> photoProperty() {
-        return photo;
-    }
-
-    public void setPhoto(Image photo) {
-        this.photo.set(photo);
-    }
 
     public Allat() {
     }
@@ -44,16 +30,7 @@ public class Allat implements Serializable {
                 ", szuletesiEv=" + szuletesiEv +
                 '}';
     }
-/*
-    public Allat(IntegerProperty azonosito, StringProperty nev, StringProperty faj, StringProperty kep, StringProperty bemutatkozas, IntegerProperty szuletesiEv) {
-        this.azonosito = azonosito;
-        this.nev = nev;
-        this.faj = faj;
-        this.kep = kep;
-        this.bemutatkozas = bemutatkozas;
-        this.szuletesiEv = szuletesiEv;
-    }
-*/
+
     public static long getSerialVersionUID() {
         return serialVersionUID.get();
     }
@@ -66,15 +43,15 @@ public class Allat implements Serializable {
         Allat.serialVersionUID.set(serialVersionUID);
     }
 
-    public int getAzonosito() {
+    public String getAzonosito() {
         return azonosito.get();
     }
 
-    public IntegerProperty azonositoProperty() {
+    public StringProperty azonositoProperty() {
         return azonosito;
     }
 
-    public void setAzonosito(int azonosito) {
+    public void setAzonosito(String azonosito) {
         this.azonosito.set(azonosito);
     }
 
@@ -126,19 +103,20 @@ public class Allat implements Serializable {
         this.bemutatkozas.set(bemutatkozas);
     }
 
-    public int getSzuletesiEv() {
+    public String getSzuletesiEv() {
         return szuletesiEv.get();
     }
 
-    public IntegerProperty szuletesiEvProperty() {
+    public StringProperty szuletesiEvProperty() {
         return szuletesiEv;
     }
 
-    public void setSzuletesiEv(int szuletesiEv) {
+    public void setSzuletesiEv(String szuletesiEv) {
         this.szuletesiEv.set(szuletesiEv);
     }
-/*
-    public Allat(int azonosito, String nev, String faj, String kep, String bemutatkozas, int szuletesiEv) {
+
+
+    public Allat(String azonosito, String nev, String faj, String kep, String bemutatkozas, String szuletesiEv) {
         this.azonosito.set(azonosito);
         this.nev.set(nev);
         this.faj.set(faj);
@@ -146,19 +124,15 @@ public class Allat implements Serializable {
         this.bemutatkozas.set(bemutatkozas);
         this.szuletesiEv.set(szuletesiEv);
     }
-*/
-    public Allat(int azonosito, String nev, String faj, String kep, String bemutatkozas, int szuletesiEv) {
-        this.azonosito.set(azonosito);
-        this.nev.set(nev);
-        this.faj.set(faj);
-        this.kep.set(kep);
-        this.bemutatkozas.set(bemutatkozas);
-        this.szuletesiEv.set(szuletesiEv);
 
-
+    public void copyTo(Allat target){
+        target.setAzonosito(this.getAzonosito());
+        target.setNev(this.getNev());
+        target.setFaj(this.getFaj());
+        target.setKep(this.getKep());
+        target.setBemutatkozas(this.getBemutatkozas());
+        target.setSzuletesiEv(this.getSzuletesiEv());
     }
-
-
 
 
 

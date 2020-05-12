@@ -30,7 +30,7 @@ public class AddAllatController implements Initializable {
     @FXML
     public TextField bemutatkozasField;
     @FXML
-    public Spinner<Integer> birthYearSpinner;
+    public TextField szuletesField;
     @FXML
     public Button photoUpload;
 
@@ -45,10 +45,7 @@ public class AddAllatController implements Initializable {
         nevField.textProperty().bindBidirectional(a.nevProperty());
         fajField.textProperty().bindBidirectional(a.fajProperty());
         bemutatkozasField.textProperty().bindBidirectional(a.bemutatkozasProperty());
-        birthYearSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(
-                1900, Calendar.getInstance().get(Calendar.YEAR),Calendar.getInstance().get(Calendar.YEAR)
-        ));
-        birthYearSpinner.getValueFactory().valueProperty().bindBidirectional(a.szuletesiEvProperty().asObject());
+        szuletesField.textProperty().bindBidirectional(a.szuletesiEvProperty());
 
 
 

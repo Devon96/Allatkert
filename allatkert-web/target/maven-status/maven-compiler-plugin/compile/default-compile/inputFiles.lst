@@ -1,6 +1,8 @@
 /home/ntlndj93/IdeaProjects/Allatkert/allatkert-web/src/main/java/hu/alkfejl/controller/RegisterController.java
 /home/ntlndj93/IdeaProjects/Allatkert/allatkert-web/src/main/java/hu/alkfejl/controller/LogoutController.java
+/home/ntlndj93/IdeaProjects/Allatkert/allatkert-web/src/main/java/hu/alkfejl/controller/Orokbefogadas.java
 /home/ntlndj93/IdeaProjects/Allatkert/allatkert-web/src/main/java/hu/alkfejl/controller/KonyvelesWebController.java
+/home/ntlndj93/IdeaProjects/Allatkert/allatkert-web/src/main/java/hu/alkfejl/controller/OrokbefogadasWebController.java
 /home/ntlndj93/IdeaProjects/Allatkert/allatkert-web/src/main/java/hu/alkfejl/controller/LoginController.java
 /home/ntlndj93/IdeaProjects/Allatkert/allatkert-web/src/main/java/hu/alkfejl/controller/OrokbefogadoWebController.java
 /home/ntlndj93/IdeaProjects/Allatkert/allatkert-web/src/main/java/hu/alkfejl/filters/AuthFilter.java

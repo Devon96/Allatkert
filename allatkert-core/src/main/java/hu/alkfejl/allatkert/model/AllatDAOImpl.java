@@ -17,6 +17,9 @@ public class AllatDAOImpl implements AllatDAO {
     private static final String SELECT_OROKBEFOGADOTT_ALLATOK = "SELECT * from Allatok,Konyveles WHERE Allatok.azonosito = Konyveles.azonosito GROUP BY Allatok.azonosito";
     private static final String SELECT_OROKBEFOGADATLAN_ALLATOK = "SELECT * from Allatok WHERE Allatok.azonosito NOT IN (SELECT azonosito FROM Konyveles)";
     private static final String SELECT_OROKBEFOGADHATO_ALLATOK = "SELECT DISTINCT Allatok.azonosito, Allatok.nev,Allatok.faj, Allatok.fenykep, Allatok.bemutatkozas, Allatok.szuletesi_ev FROM Allatok,Konyveles WHERE Allatok.azonosito = Konyveles.azonosito AND szuletesi_ev > 2018 OR Allatok.azonosito NOT IN (SELECT DISTINCT Konyveles.azonosito FROM Konyveles)";
+    private static final String UPDATE_ALLAT = "UPDATE Allatok SET nev=?, faj=?, fenykep=?, bemutatkozas=?, szuletesi_ev=? WHERE azonosito=?";
+
+
 
     public AllatDAOImpl(){
         try {
@@ -38,7 +41,7 @@ public class AllatDAOImpl implements AllatDAO {
                 st.setString(2, allat.getFaj());
                 st.setString(3, allat.getKep());
                 st.setString(4, allat.getBemutatkozas());
-                st.setInt(5,allat.getSzuletesiEv());
+                st.setString(5,allat.getSzuletesiEv());
 
                 int res = st.executeUpdate();
                 if (res == 1) {
@@ -54,7 +57,7 @@ public class AllatDAOImpl implements AllatDAO {
                 st.setString(1, allat.getNev());
                 st.setString(2, allat.getFaj());
                 st.setString(3, allat.getBemutatkozas());
-                st.setInt(4,allat.getSzuletesiEv());
+                st.setString(4,allat.getSzuletesiEv());
 
                 int res = st.executeUpdate();
                 if (res == 1) {
@@ -77,7 +80,13 @@ public class AllatDAOImpl implements AllatDAO {
             ResultSet rs = st.executeQuery(SELECT_ALL_ALLAT)
         ){
             while(rs.next()){
-                Allat allat = new Allat(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6));
+                Allat allat = new Allat();
+                        allat.setAzonosito(Integer.toString(rs.getInt(1)));
+                        allat.setNev(rs.getString(2));
+                        allat.setFaj(rs.getString(3));
+                        allat.setKep(rs.getString(4));
+                        allat.setBemutatkozas(rs.getString(5));
+                        allat.setSzuletesiEv(rs.getString(6));
                 result.add(allat);
             }
         }catch (Exception e){
@@ -88,6 +97,22 @@ public class AllatDAOImpl implements AllatDAO {
 
     @Override
     public boolean updateAllat(Allat allat) {
+
+        try (Connection conn = DriverManager.getConnection(DBConfig.DB_CONN_STR);
+             PreparedStatement st = conn.prepareStatement(UPDATE_ALLAT)
+        ) {
+            st.setString(1,allat.getNev());
+            st.setString(2,allat.getFaj());
+            st.setString(3,allat.getKep());
+            st.setString(4,allat.getBemutatkozas());
+            st.setString(5,allat.getSzuletesiEv());
+            st.setInt(6,Integer.parseInt(allat.getAzonosito()));
+
+            int res = st.executeUpdate();
+            return res == 1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 
@@ -97,7 +122,7 @@ public class AllatDAOImpl implements AllatDAO {
         try (Connection conn = DriverManager.getConnection(DBConfig.DB_CONN_STR);
              PreparedStatement st = conn.prepareStatement(DELETE_ALLAT)
         ) {
-            st.setInt(1,allat.getAzonosito());
+            st.setInt(1,Integer.parseInt(allat.getAzonosito()));
             int res = st.executeUpdate();
             if (res == 1) {
                 return true;
@@ -137,7 +162,13 @@ public class AllatDAOImpl implements AllatDAO {
             ResultSet rs = st.executeQuery(SELECT_OROKBEFOGADOTT_ALLATOK)
         ){
             while(rs.next()){
-                Allat allat = new Allat(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6));
+                Allat allat = new Allat();
+                    allat.setAzonosito(Integer.toString(rs.getInt(1)));
+                    allat.setNev(rs.getString(2));
+                    allat.setFaj(rs.getString(3));
+                    allat.setKep(rs.getString(4));
+                    allat.setBemutatkozas(rs.getString(5));
+                    allat.setSzuletesiEv(rs.getString(6));
                 result.add(allat);
             }
         }catch (Exception e){
@@ -155,8 +186,14 @@ public class AllatDAOImpl implements AllatDAO {
             ResultSet rs = st.executeQuery(SELECT_OROKBEFOGADATLAN_ALLATOK)
         ){
             while(rs.next()){
-                Allat allat = new Allat(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6));
-                result.add(allat);
+                Allat allat = new Allat();
+                    allat.setAzonosito(Integer.toString(rs.getInt(1)));
+                    allat.setNev(rs.getString(2));
+                    allat.setFaj(rs.getString(3));
+                    allat.setKep(rs.getString(4));
+                    allat.setBemutatkozas(rs.getString(5));
+                    allat.setSzuletesiEv(rs.getString(6));
+                    result.add(allat);
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -174,7 +211,13 @@ public class AllatDAOImpl implements AllatDAO {
             ResultSet rs = st.executeQuery(SELECT_OROKBEFOGADHATO_ALLATOK)
         ){
             while(rs.next()){
-                Allat allat = new Allat(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6));
+                Allat allat = new Allat();
+                    allat.setAzonosito(Integer.toString(rs.getInt(1)));
+                    allat.setNev(rs.getString(2));
+                    allat.setFaj(rs.getString(3));
+                    allat.setKep(rs.getString(4));
+                    allat.setBemutatkozas(rs.getString(5));
+                    allat.setSzuletesiEv(rs.getString(6));
                 result.add(allat);
             }
         }catch (Exception e){

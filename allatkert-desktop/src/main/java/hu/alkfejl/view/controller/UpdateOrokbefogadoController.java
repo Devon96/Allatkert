@@ -83,8 +83,6 @@ public class UpdateOrokbefogadoController implements Initializable {
     private void save(ActionEvent event) {
         boolean result = false;
 
-        System.out.println(obf.toString());
-
         result = OrokbefogadoController.getInstance().updateOrokbefogado(obf);
 
         if (result) {
