@@ -25,6 +25,7 @@ import java.util.ResourceBundle;
 
 public class UpdateAllatController implements Initializable {
 
+
     private Allat allat = new Allat();
 
     @FXML
@@ -41,6 +42,8 @@ public class UpdateAllatController implements Initializable {
     public TextField szuletesField;
     @FXML
     public Label errorMsg;
+    @FXML
+    private Button addButton;
 
 
 
@@ -78,6 +81,9 @@ public class UpdateAllatController implements Initializable {
                     .encodeToString(fileContent);
             allat.setKep(encodedString);
         } );
+
+
+        addButton.disableProperty().bind(fajField.textProperty().isNull().or(fajField.textProperty().isEmpty()).or(szuletesField.textProperty().isEmpty().or(szuletesField.textProperty().isNull())));
 
 
 

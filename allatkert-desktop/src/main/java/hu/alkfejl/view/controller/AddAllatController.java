@@ -35,7 +35,9 @@ public class AddAllatController implements Initializable {
     @FXML
     public TextField szuletesField;
     @FXML
-    public Button photoUpload;
+    private Button photoUpload;
+    @FXML
+    private Button addButton;
 
     private Allat a = new Allat();
 
@@ -76,6 +78,7 @@ public class AddAllatController implements Initializable {
         } );
 
 
+        addButton.disableProperty().bind(fajField.textProperty().isNull().or(fajField.textProperty().isEmpty()).or(szuletesField.textProperty().isEmpty().or(szuletesField.textProperty().isNull())));
 
 
 

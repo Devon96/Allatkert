@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -32,6 +33,8 @@ public class UpdateOrokbefogadoController implements Initializable {
     public PasswordField jelszoField;
     @FXML
     public Label errorMsg;
+    @FXML
+    private Button addButton;
 
     private Orokbefogado obf = new Orokbefogado();
 
@@ -59,7 +62,12 @@ public class UpdateOrokbefogadoController implements Initializable {
 
         });
 
-
+        addButton.disableProperty().bind(
+                felhasznalonevField.textProperty().isNull().or(felhasznalonevField.textProperty().isEmpty()).or(
+                        (emailField.textProperty().isEmpty().or(emailField.textProperty().isNull())).and
+                                (telefonszamField.textProperty().isNull().or(telefonszamField.textProperty().isEmpty()))
+                ).or(jelszoField.textProperty().isNull().or(jelszoField.textProperty().isEmpty()))
+        );
 
 
 
