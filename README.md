@@ -16,14 +16,19 @@ A projecten belül 3 modul található: allatkert-core, allatkert-desktop és al
 1. Allatkert-core:
    - model és controller osztályok
    - jelszó titkosítás
+   - sql injection elleni védelem
+   - erőforrások lezárása
 2. Allatkert-desktop:
    - állatok listázása, módosítása, törlése, hozzáadása, örökbefogadottság alapján való szűrés
    - örökbefogadók listázása, módosítása, törlése, hozzáadása
    - könyvelések listázása, törlése, hozzáadása, szűrés örökbefogadó, örökbefogadott, időpont és támogatás típusa szerint
-   - többszálúság
+   - többszálúság a delete,update,insert műveleteknél
    - külső css file használata
-   - validáció
-   - képek base64 kódolása
+   - validáció:
+     - email formátum
+     - a támogatás típusától függően jelenik meg az összeg és a mennyiség mező
+     - kötelezően kitöltendő mezők
+   - képek base64 kódolása, base64 kód táblázatban történő képpé alakítása
 3. Allatkert-web:
    - örökbefogadó bejelentkezés/regisztráció
    - állatok listázása, örökbefogadottság alapján való szűrés
