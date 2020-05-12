@@ -4,6 +4,9 @@ import hu.alkfejl.allatkert.controller.AllatController;
 import hu.alkfejl.allatkert.controller.KonyvelesController;
 import hu.alkfejl.allatkert.controller.OrokbefogadoController;
 import hu.alkfejl.allatkert.model.bean.Konyveles;
+import hu.alkfejl.allatkert.utils.Utils;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -97,13 +100,23 @@ public class AddKonyvelesController implements Initializable {
 
     @FXML
     private void save(ActionEvent event) {
-        boolean result;
-        result = KonyvelesController.getInstance().addKonyveles(k);
-        if (result) {
-            ((Node) event.getSource()).getScene().getWindow().hide();
-        } else {
-            System.err.println("MEGINT EGY ADATBÁZIS HIBA");
-        }
+        Task<Boolean> task = new Task<>(){
+            @Override
+            protected Boolean call() throws Exception {
+                return KonyvelesController.getInstance().addKonyveles(k);
+            }
+        };
+        Thread updateThread = new Thread(task);
+        updateThread.start();
+
+        task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, event1 -> {
+            Boolean result = task.getValue();
+            if (result) {
+                ((Node) event.getSource()).getScene().getWindow().hide();
+            } else {
+                Utils.showWarning("Nem sikerült a beszúrás");
+            }
+        });
     }
 
 

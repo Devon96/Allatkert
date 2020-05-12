@@ -2,6 +2,9 @@ package hu.alkfejl.view.controller;
 
 import hu.alkfejl.allatkert.controller.AllatController;
 import hu.alkfejl.allatkert.model.bean.Allat;
+import hu.alkfejl.allatkert.utils.Utils;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -92,16 +95,24 @@ public class AddAllatController implements Initializable {
 
     @FXML
     private void save(ActionEvent event) {
-        boolean result = false;
+        Task<Boolean> task = new Task<>(){
+            @Override
+            protected Boolean call() throws Exception {
+                return AllatController.getInstance().addAllat(a);
+            }
+        };
 
-        System.out.println(a.toString());
+        Thread updateThread = new Thread(task);
+        updateThread.start();
 
-        result = AllatController.getInstance().addAllat(a);
-        if (result) {
-            ((Node) event.getSource()).getScene().getWindow().hide();
-        } else {
-            System.err.println("MEGINT EGY ADATBÁZIS HIBA");
-        }
+        task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, event1 -> {
+            Boolean result = task.getValue();
+            if (result) {
+                ((Node) event.getSource()).getScene().getWindow().hide();
+            } else {
+                Utils.showWarning("Nem sikerült a beszúrás");
+            }
+        });
     }
 
 }

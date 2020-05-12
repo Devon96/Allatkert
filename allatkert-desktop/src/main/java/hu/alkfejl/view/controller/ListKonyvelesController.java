@@ -4,6 +4,7 @@ import hu.alkfejl.App;
 import hu.alkfejl.allatkert.controller.KonyvelesController;
 import hu.alkfejl.allatkert.model.bean.Konyveles;
 import javafx.collections.FXCollections;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -121,7 +122,20 @@ public class ListKonyvelesController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Biztos vagy benne hogy ki akarod törölni ezt az ID-jű könyvelést: '" + konyveles.getKonyvelesID() + "'", ButtonType.YES, ButtonType.NO);
         alert.showAndWait().ifPresent(buttonType -> {
             if(buttonType.equals(ButtonType.YES)){
-                KonyvelesController.getInstance().deleteKonyveles(konyveles);
+                Task task = new Task<Boolean>(){
+                    @Override
+                    protected Boolean call() throws Exception {
+                        return KonyvelesController.getInstance().deleteKonyveles(konyveles);
+                    }
+                };
+                Thread deleteThread = new Thread(task);
+                deleteThread.start();
+                try {
+                    deleteThread.join();
+                    refreshTable();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
