@@ -7,9 +7,10 @@
    - a run/debug confirgurationsnél a Deployment fülön az Application context üresre volt állítva
    - a run/debug confirgurationsnél az URL http://localhost:8080/ -ra volt állítva
    - ezek a beállítások nálam azért kellettek, mert valamiért az index.jsp-ben nem értékelődött ki jól az URL String, és ezek a beállítások oldották meg a problémát
+4. A desktop modulon belül érdemes lehet nagyobbra venni a méretet ha nem látszana minden
 
 
-## 2. Funkciók
+## 2. Funkciók,
 
 A projecten belül 3 modul található: allatkert-core, allatkert-desktop és allatkert-web
 
@@ -23,7 +24,7 @@ A projecten belül 3 modul található: allatkert-core, allatkert-desktop és al
    - örökbefogadók listázása, módosítása, törlése, hozzáadása
    - könyvelések listázása, törlése, hozzáadása, szűrés örökbefogadó, örökbefogadott, időpont és támogatás típusa szerint
    - többszálúság a delete,update,insert műveleteknél
-   - külső css file használata
+   - külső css file elérése
    - validáció:
      - email formátum
      - a támogatás típusától függően jelenik meg az összeg és a mennyiség mező
@@ -35,9 +36,9 @@ A projecten belül 3 modul található: allatkert-core, allatkert-desktop és al
    - örökbefogadók listázása
    - könyvelések listázása, szűrés örökbefogadó, örökbefogadott, időpont és támogatás típusa szerint
    - az adott felhasználó által örökbefogadható állatok listázása
-   - állat örökbefogadása
+   - állat örökbefogadása a felhasználó által
    - session kezelés
-   - külső css file használata
+   - külső css elérése
    
 ## 3.Használt verziók:
 1. Operációs rendszer: Ubuntu 18.04 LTS
